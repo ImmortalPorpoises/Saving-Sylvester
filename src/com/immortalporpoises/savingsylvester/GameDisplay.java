@@ -11,10 +11,10 @@ import javax.swing.*;
 public class GameDisplay extends JPanel {
 
 	private JPanel imagepanel;
-	private JLabel text_output;
+	private JTextArea text_output;
 	
 	//create input variable
-	private String outcome = "Just some random text";
+	private String outcome = "";
 	
 	/*
 	* Create an ImageViewer show it on screen.
@@ -30,13 +30,13 @@ public class GameDisplay extends JPanel {
 		this.add(image_label);
 		
 		//setup user input area
-		final JTextArea user_input = new JTextArea("Enter something here");
+		final JTextArea user_input = new JTextArea("");
 		user_input.setBounds(0, 301, 512, 300);
 		this.add(user_input);
 		user_input.setFont(new Font("Garamond", Font.PLAIN, 15));
 		
 		//setup output area
-		JTextArea text_output = new JTextArea();
+		text_output = new JTextArea("Test text");
 		text_output.setEditable(false);
 		text_output.setLineWrap(true);
 		text_output.setBounds(513, 0, 500, 600);
@@ -65,11 +65,9 @@ public class GameDisplay extends JPanel {
 					{
 						if(e.getKeyChar() == KeyEvent.VK_ENTER)
 						{
-	                        String outcome = user_input.getText();
-	                        	                        
+	                        outcome = user_input.getText();                 
 	                        user_input.setText("");
-	                        user_input.setSelectionStart(user_input.getText().length());
-	                        System.out.println(outcome);
+	                        update = true;
 	                    }
 					}
 	            }
