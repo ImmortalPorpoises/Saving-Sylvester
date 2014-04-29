@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
-public static boolean update = false;
 
 public class Game {
 
@@ -21,14 +20,21 @@ public class Game {
 		frame.add(display);
 		frame.setSize(1024, 600);
 		frame.setVisible(true);
+		
+		for(;;)
+		{
+			updateGame();
+		}
 	}
 	
 	public void parseText(String text_input)
 	{
+		System.out.println("well, I parsed it!");
 		if(text_input.equals("east"))
 		{
 			display.setOutput("You are now attempting to go east...");
 		}
+		display.setUpdateValue(false);
 			//else
 //		{
 //			display.setOutput("What was that again?");
@@ -37,8 +43,11 @@ public class Game {
 	
 	public void updateGame()
 	{
-		text_to_parse = display.getInputText();
-		this.parseText(text_to_parse);
+		if(display.getUpdateValue())
+		{
+			text_to_parse = display.getInputText();
+			this.parseText(text_to_parse);
+		}
 	}
 
 }

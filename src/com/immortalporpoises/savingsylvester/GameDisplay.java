@@ -12,6 +12,7 @@ public class GameDisplay extends JPanel {
 
 	private JPanel imagepanel;
 	private JTextArea text_output;
+	private boolean update;
 	
 	//create input variable
 	private String outcome = "";
@@ -97,6 +98,16 @@ public class GameDisplay extends JPanel {
 	public String getInputText()
 	{
 		return outcome;
+	}
+	
+	public boolean getUpdateValue()
+	{
+		return update;
+	}
+	
+	public void setUpdateValue(boolean upval)
+	{
+		update = upval;
 	}
 
 }
