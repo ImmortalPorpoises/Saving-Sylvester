@@ -2,7 +2,8 @@ package com.immortalporpoises.savingsylvester;
 
 public class Passage {
 
-	private String passage_name, destination;
+	private String passage_name;
+	private String destination;
 	
 	public Passage(String passage_name, String destination)
 	{

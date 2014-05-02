@@ -34,10 +34,12 @@ public class GameDisplay extends JPanel {
 		final JTextArea user_input = new JTextArea("");
 		user_input.setBounds(0, 301, 512, 300);
 		this.add(user_input);
-		user_input.setFont(new Font("Garamond", Font.PLAIN, 15));
+		user_input.setForeground(Color.white);
+		user_input.setBackground(Color.black);
+		user_input.setFont(new Font("Garamond", Font.PLAIN, 17));
 		
 		//setup output area
-		text_output = new JTextArea("Test text");
+		text_output = new JTextArea("");
 		text_output.setEditable(false);
 		text_output.setLineWrap(true);
 		text_output.setBounds(513, 0, 500, 600);
@@ -45,7 +47,7 @@ public class GameDisplay extends JPanel {
 		this.add(text_output);
 		text_output.setForeground(Color.white);
 		text_output.setBackground(Color.black);
-		text_output.setFont(new Font("Garamond", Font.PLAIN, 15));
+		text_output.setFont(new Font("Garamond", Font.PLAIN, 17));
 		
 		//check for enter keypress
 		user_input.addKeyListener(

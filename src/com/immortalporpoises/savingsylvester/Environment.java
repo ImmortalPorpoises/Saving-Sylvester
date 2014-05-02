@@ -14,5 +14,9 @@ public abstract class Environment {
 	{
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public String getDescription()
+	{
+		return entry_description;
+	}
 }

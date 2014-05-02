@@ -1,6 +1,6 @@
 package com.immortalporpoises.savingsylvester;
 
-public class GardenIntro extends Environment
+public final class GardenIntro extends Environment
 {
 
 	public GardenIntro()
@@ -12,6 +12,8 @@ public class GardenIntro extends Environment
 		//setup passages in garden
 		Passage east = new Passage("East", "SecondGardenArea");
 		entrances_and_exits.add(east);
+		Passage west = new Passage("West", "SecondGardenArea");
+		entrances_and_exits.add(west);
 		
 		//setup sthings
 		Thing flowerbed = new Thing("Flowerbed", "a spacious, colorful flowerbed filled with dozens of bright blue and red flowers");
