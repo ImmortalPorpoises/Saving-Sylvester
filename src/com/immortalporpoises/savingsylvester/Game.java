@@ -31,11 +31,10 @@ public class Game {
 	public void parseText(String text_input)
 	{
 		String[] parts = text_input.split(" ");
-		String part2 = "test";
-		String part1 = "test 2";
+		String part1 = "test";
+		String part2 = "test 2";
 		if (parts.length == 2)
 		{
-		     System.out.println("Stop being dumb!!");
 		     part1 = parts[0];
 		     part2 = parts[1];
 		}
