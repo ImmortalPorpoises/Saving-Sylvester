@@ -18,6 +18,7 @@ public class Game {
 		display.setOutput("We open at the close. You are in a room, sobbing violently in the fetal position holding a giant pink fluffy teddy bear. You throw the teddy bear across the room, walk intently to a computer, and promptly begin whining to the world through various social medias. After a brief time, you are contacted by Candice, who says she wants his help. You agree. She takes you to their headquarters and introduces you to the rest of the team. 'We don’t like the way the book ended, so Doc made a machine that runs at 88mph and creates story world.' You go into the world.");
 
     	JFrame frame = new JFrame();
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(display);
 		frame.setSize(1024, 600);
 		frame.setVisible(true);
