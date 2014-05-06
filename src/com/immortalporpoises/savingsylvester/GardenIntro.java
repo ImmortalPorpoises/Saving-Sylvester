@@ -22,5 +22,11 @@ public final class GardenIntro extends Environment
 		//entry description
 		entry_description = "You find yourself in the northwest corner of a large garden. Above you from large oak trees hangs golden fruit";
 	}
+	
+	public String toString()
+	{
+		return "garden";
+		
+	}
 
 }

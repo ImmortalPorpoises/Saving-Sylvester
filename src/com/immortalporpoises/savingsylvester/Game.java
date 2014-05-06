@@ -7,31 +7,38 @@ import java.lang.Class;
 
 public class Game {
 
+	//variables that store the current environment, the game display window, and the 
 	private Environment currentEnvironment = new GardenIntro();
 	private GameDisplay display;
-	private String text_to_parse = "nada";
+	private String answer = "42";
 	
 	public Game() {
-		//create an Image Display
+		
+		//create an Image Display with its initial image
     	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\palace_image.jpg");
 		display.setBackground(new Color(0, 0, 0));
 		display.setOutput("We open at the close. You are in a room, sobbing violently in the fetal position holding a giant pink fluffy teddy bear. You throw the teddy bear across the room, walk intently to a computer, and promptly begin whining to the world through various social medias. After a brief time, you are contacted by Candice, who says she wants his help. You agree. She takes you to their headquarters and introduces you to the rest of the team. 'We don’t like the way the book ended, so Doc made a machine that runs at 88mph and creates story world.' You go into the world.");
 
+		//create the JFrame and add the display to it
     	JFrame frame = new JFrame();
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(display);
 		frame.setSize(1024, 600);
 		frame.setVisible(true);
 		
+		//continue to update the game until the user exits the window
 		for(;;)
 		{
 			updateGame();
 		}
 	}
 	
-	public void parseText(String text_input)
+	public void parseText(String answer)
 	{
-		String[] parts = text_input.split(" ");
+		answer = answer.toLowerCase();
+		answer = answer.trim();
+		
+		String[] parts = answer.split(" ");
 		String part1 = "test";
 		String part2 = "test 2";
 		if (parts.length == 2)
@@ -78,12 +85,17 @@ public class Game {
 			}
 		}
 		
+		if(part1.equals("look"))
+		{
+			if(part2.equals(currentEnvironment.toString()))
+			{
+				display.setOutput(currentEnvironment.entry_description);
+			} else if(part2.equals("bucket"))
+			{
+				currentEnvironment.sthings_in_environ.get(0);
+			}
+		}
 		
-//		if(text_input.equals("exit"))
-//		{
-//			int b;
-//			System.exit(b);
-//		}
 		display.setUpdateValue(false);
 	}
 	
@@ -91,8 +103,8 @@ public class Game {
 	{
 		if(display.getUpdateValue())
 		{
-			text_to_parse = display.getInputText();
-			this.parseText(text_to_parse);
+			answer = display.getInputText();
+			this.parseText(answer);
 		}
 	}
 
