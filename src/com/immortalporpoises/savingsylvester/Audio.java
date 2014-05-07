@@ -11,7 +11,7 @@ public class Audio extends Thread {
     public void run() {
     	try
     	{
-    	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("SavingSylvesterGame/Audio/CSGameIntro.wav"));
+    	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Audio/CSGameIntro.wav"));
     	Clip clip = AudioSystem.getClip();
     	clip.open(audioIn);
     	clip.start();
