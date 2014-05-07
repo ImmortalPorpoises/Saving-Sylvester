@@ -8,7 +8,7 @@ import java.lang.Class;
 public class Game {
 
 	//variables that store the current environment, the game display window, and the 
-	private Environment currentEnvironment = new GardenIntro();
+	private Environment currentEnvironment = new YourRoom();
 	private GameDisplay display;
 	private String answer = "42";
 	
@@ -17,7 +17,7 @@ public class Game {
 		//create an Image Display with its initial image
     	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\palace_image.jpg");
 		display.setBackground(new Color(0, 0, 0));
-		display.setOutput("We open at the close. You are in a room, sobbing violently in the fetal position holding a giant pink fluffy teddy bear. You throw the teddy bear across the room, walk intently to a computer, and promptly begin whining to the world through various social medias. After a brief time, you are contacted by Candice, who says she wants his help. You agree. She takes you to their headquarters and introduces you to the rest of the team. 'We don’t like the way the book ended, so Doc made a machine that runs at 88mph and creates story world.' You go into the world.");
+		display.setOutput("We open at the close. You are in your room, sobbing violently in the fetal position holding a giant pink fluffy teddy bear. You throw the teddy bear across the room, walk intently to a computer, and promptly begin whining to the world through various social medias. Suddenly, amid a flash of light, a woman, clad in a bright red jumpsuit, appears in your room.");
 
 		//create the JFrame and add the display to it
     	JFrame frame = new JFrame();
@@ -49,50 +49,37 @@ public class Game {
 		
 		System.out.println(part1);
 		System.out.println(part2);
+		System.out.println(answer);
 		
-		if(part2.equals("west"))
+		if(part1.equals("go"))
 		{
-			if(currentEnvironment.entrances_and_exits.get(0).getDestination().equals("SecondGardenArea"))
+			if(part2.equals("north"))
 			{
-				currentEnvironment = new SecondGardenArea();
-				display.setOutput(currentEnvironment.getDescription());
+				answer = "n";
 			}
-			else if(currentEnvironment.entrances_and_exits.get(0).getDestination().equals("GardenIntro"))
+			if(part2.equals("south"))
 			{
-				currentEnvironment = new GardenIntro();
-				display.setOutput(currentEnvironment.getDescription());
-			} else
-			{
-				display.setOutput("Pull yourself together and try writing something coherent next time");
+				answer = "s";
 			}
-		}
-		
-		if(part2.equals("east"))
-		{
-			if(currentEnvironment.entrances_and_exits.get(0).getDestination().equals("SecondGardenArea"))
+			if(part2.equals("west"))
 			{
-				Passage newpassage = currentEnvironment.entrances_and_exits.get(0);
-				currentEnvironment = new SecondGardenArea();
-				display.setOutput(currentEnvironment.getDescription());
+				answer = "w";
 			}
-			if(currentEnvironment.entrances_and_exits.get(0).getDestination().equals("GardenIntro"))
+			
+			if(part2.equals("east"))
 			{
-				currentEnvironment = new GardenIntro();
-				display.setOutput(currentEnvironment.getDescription());
-			} else
-			{
-				display.setOutput("Pull yourself together and try writing something coherent next time");
+				answer = "e";
 			}
 		}
 		
 		if(part1.equals("look"))
 		{
-			if(part2.equals(currentEnvironment.toString()))
+			if(part2.equals(currentEnvironment.getEnvironName()))
 			{
-				display.setOutput(currentEnvironment.entry_description);
-			} else if(part2.equals("bucket"))
+				display.setOutput(currentEnvironment.getDescription());
+			} else
 			{
-				currentEnvironment.sthings_in_environ.get(0);
+				display.setOutput(currentEnvironment.getThingDescription(part2));
 			}
 		}
 		

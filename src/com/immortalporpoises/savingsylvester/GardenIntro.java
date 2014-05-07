@@ -5,9 +5,8 @@ public final class GardenIntro extends Environment
 
 	public GardenIntro()
 	{
-		//initialize items in the garden
-		Item bucket = new Item("Bucket", "a small wooden pail that is slowly leaking");
-		items_in_environ.add(bucket);
+		//give the garden area a name
+		environ_name = "garden";
 		
 		//setup passages in garden
 		Passage east = new Passage("East", "SecondGardenArea");
@@ -15,9 +14,9 @@ public final class GardenIntro extends Environment
 		Passage west = new Passage("West", "SecondGardenArea");
 		entrances_and_exits.add(west);
 		
-		//setup sthings
-		Thing flowerbed = new Thing("Flowerbed", "a spacious, colorful flowerbed filled with dozens of bright blue and red flowers");
-		sthings_in_environ.add(flowerbed);
+		//setup things
+		Bucket b = new Bucket();
+		sthings_in_environ.add(b);
 		
 		//entry description
 		entry_description = "You find yourself in the northwest corner of a large garden. Above you from large oak trees hangs golden fruit";
@@ -26,7 +25,5 @@ public final class GardenIntro extends Environment
 	public String toString()
 	{
 		return "garden";
-		
 	}
-
 }
