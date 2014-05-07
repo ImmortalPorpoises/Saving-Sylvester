@@ -34,6 +34,6 @@ public abstract class Environment {
 				return sthings_in_environ.get(i).getDescription();
 			}
 		}
-		return "there isn't a " + thing_name + " anywhere in this part of the world. Don't panice. Just take a deep breath and rethink this.";
+		return "...wait a minute. There isn't a " + thing_name + " anywhere in this part of the world. Don't panice. Just take a deep breath and rethink this.";
 	}
 }

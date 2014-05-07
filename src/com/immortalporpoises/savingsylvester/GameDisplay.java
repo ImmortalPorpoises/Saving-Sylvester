@@ -12,6 +12,7 @@ public class GameDisplay extends JPanel {
 
 	private JPanel imagepanel;
 	private JTextArea text_output;
+	private JScrollPane scroll;
 	private boolean update;
 	
 	//create input variable
@@ -42,12 +43,18 @@ public class GameDisplay extends JPanel {
 		text_output = new JTextArea("");
 		text_output.setEditable(false);
 		text_output.setLineWrap(true);
-		text_output.setBounds(513, 0, 500, 600);
+		//text_output.setBounds(513, 0, 500, 600);
 		text_output.setMargin(new Insets(10, 10, 10, 10));
 		this.add(text_output);
 		text_output.setForeground(Color.white);
 		text_output.setBackground(Color.black);
 		text_output.setFont(new Font("Garamond", Font.PLAIN, 17));
+		
+		//create scroll area
+		scroll = new JScrollPane(text_output);
+		scroll.setBounds(513, 0, 500, 562);
+		scroll.setAutoscrolls(true);
+		this.add(scroll);
 		
 		//check for enter keypress
 		user_input.addKeyListener(
@@ -94,7 +101,7 @@ public class GameDisplay extends JPanel {
 	
 	public void setOutput(String output)
 	{
-		text_output.setText(output);
+		text_output.setText(text_output.getText().trim() + "\n    " + output);
 	}
 	
 	public String getInputText()

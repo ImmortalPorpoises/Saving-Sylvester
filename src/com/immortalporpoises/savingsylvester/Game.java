@@ -76,9 +76,11 @@ public class Game {
 		{
 			if(part2.equals(currentEnvironment.getEnvironName()))
 			{
+				display.setOutput("You look around the " + currentEnvironment.getEnvironName());
 				display.setOutput(currentEnvironment.getDescription());
 			} else
 			{
+				display.setOutput("You attempt to look at the " + part2);
 				display.setOutput(currentEnvironment.getThingDescription(part2));
 			}
 		}
