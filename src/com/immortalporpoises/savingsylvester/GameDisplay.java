@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 
 public class GameDisplay extends JPanel {
 
@@ -43,6 +44,10 @@ public class GameDisplay extends JPanel {
 		text_output = new JTextArea("");
 		text_output.setEditable(false);
 		text_output.setLineWrap(true);
+		DefaultCaret caret = (DefaultCaret)text_output.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setViewportView(text_output);
 		text_output.setWrapStyleWord(true); //Added to fix text wrapping issue
 		//text_output.setBounds(513, 0, 500, 600);
 		text_output.setMargin(new Insets(10, 10, 10, 10));
