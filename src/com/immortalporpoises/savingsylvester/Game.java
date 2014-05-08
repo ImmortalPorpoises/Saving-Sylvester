@@ -17,7 +17,7 @@ public class Game {
 		//create an Image Display with its initial image
     	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\palace_image.jpg");
 		display.setBackground(new Color(0, 0, 0));
-		display.setOutput("We open at the close. You are in your room, sobbing violently in the fetal position holding a giant pink fluffy teddy bear. You throw the teddy bear across the room, walk intently to a computer, and promptly begin whining to the world through various social medias. Suddenly, amid a flash of light, a woman, clad in a bright red jumpsuit, appears in your room.");
+		display.setOutput(" We open at the close. You are in a room, sobbing\n violently in the fetal position holding a giant pink fluffy\n teddy bear. You throw the teddy bear across the room,\n walk intently to a computer, and promptly begin \n whining to the world through various social medias.\n After a brief time, you are contacted by Candice,\n who says she wants his help. You agree. She takes you\n to their headquarters and introduces you to the rest of\n the team. 'We don't like the way the book ended, so Doc made a machine that runs at 88mph and creates story world.' You go into the world.");
 
 		//create the JFrame and add the display to it
     	JFrame frame = new JFrame();
