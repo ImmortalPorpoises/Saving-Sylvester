@@ -17,11 +17,12 @@ public class Game {
 		//create an Image Display with its initial image
     	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\palace_image.jpg");
 		display.setBackground(new Color(0, 0, 0));
+		
 		display.setOutput("We open at the close. You are in your room, sobbing violently in the fetal position holding a "
 				+ "giant pink fluffy teddy bear. You throw the teddy bear across the room, walk intently to your computer, "
 				+ "and promptly begin whining to the world through various social medias. Strangely enough, you are suddenly "
 				+ "struck by the feeling that someone is watching you. You rise from your desk to look around.");
-
+		
 		//create the JFrame and add the display to it
     	JFrame frame = new JFrame();
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
