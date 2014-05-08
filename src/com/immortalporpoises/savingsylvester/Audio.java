@@ -14,6 +14,7 @@ public class Audio extends Thread {
     	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Audio/CSGameIntro.wav"));
     	Clip clip = AudioSystem.getClip();
     	clip.open(audioIn);
+    	clip.loop(Clip.LOOP_CONTINUOUSLY);
     	clip.start();
     	}
     	catch(Exception ex)
@@ -24,7 +25,8 @@ public class Audio extends Thread {
     	}
 
     public static void main(String args[]) {
-        (new Audio()).start();
+
+    		 (new Audio()).start();
     }
     //hi
 }

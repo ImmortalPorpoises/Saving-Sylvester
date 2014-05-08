@@ -43,6 +43,7 @@ public class GameDisplay extends JPanel {
 		text_output = new JTextArea("");
 		text_output.setEditable(false);
 		text_output.setLineWrap(true);
+		text_output.setWrapStyleWord(true); //Added to fix text wrapping issue
 		//text_output.setBounds(513, 0, 500, 600);
 		text_output.setMargin(new Insets(10, 10, 10, 10));
 		this.add(text_output);
