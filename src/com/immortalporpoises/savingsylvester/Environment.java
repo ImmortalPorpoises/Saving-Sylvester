@@ -36,4 +36,17 @@ public abstract class Environment {
 		}
 		return "...wait a minute. There isn't a " + thing_name + " anywhere in this part of the world. Don't panic. Just take a deep breath and rethink this.";
 	}
+	
+	//returns the array index value of an object with the given name. If the object doesn't exist, then it returns -1
+	public int getThingIndex(String thing_name)
+	{
+		for(int i = 0; i<sthings_in_environ.size(); i++)
+		{			
+			if(thing_name.equals(sthings_in_environ.get(i).getName()))
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
 }

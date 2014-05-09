@@ -3,7 +3,10 @@ package com.immortalporpoises.savingsylvester;
 import java.awt.Color;
 
 import javax.swing.JFrame;
+
 import java.lang.Class;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
 
@@ -11,6 +14,7 @@ public class Game {
 	private Environment currentEnvironment = new YourRoom();
 	private GameDisplay display;
 	private String answer = "42";
+	private List<Thing> Inventory = new ArrayList<Thing>();
 	
 	public Game() {
 		
@@ -84,8 +88,27 @@ public class Game {
 				display.setOutput(currentEnvironment.getDescription());
 			} else
 			{
-				display.setOutput("You attempt to look at the " + part2);
+				display.setOutput("You look at the " + part2);
 				display.setOutput(currentEnvironment.getThingDescription(part2));
+			}
+		}
+		
+		if(part1.equals("get"))
+		{
+			int index = currentEnvironment.getThingIndex(part2);
+			if(index==-1)
+			{
+				display.setOutput("You can't get that sort of thing here. Or maybe I'm just misunderstanding you. I tend "
+						+ "to think the problem is on your end however: I'm a computer. I don't make mistakes.");
+			} else if(currentEnvironment.sthings_in_environ.get(index).isCollectable())
+			{
+				Inventory.add(currentEnvironment.sthings_in_environ.get(index));
+				currentEnvironment.sthings_in_environ.remove(index);
+				display.setOutput("The " + part2 + " has been added to your inventory");
+			} else
+			{
+				display.setOutput("You cannot put a " + part2 + " in your inventory. Do try to behave yourself or I will "
+						+ "be forced to exterminate you.");
 			}
 		}
 		
