@@ -38,7 +38,7 @@ public class GameDisplay extends JPanel {
 		this.add(user_input);
 		user_input.setForeground(Color.white);
 		user_input.setBackground(Color.black);
-		user_input.setFont(new Font("Garamond", Font.PLAIN, 17));
+		user_input.setFont(new Font("Goudy Old Style", Font.PLAIN, 18));
 				
 		//setup output area
 		text_output = new JTextArea("");
@@ -50,7 +50,7 @@ public class GameDisplay extends JPanel {
 		this.add(text_output);
 		text_output.setForeground(Color.white);
 		text_output.setBackground(Color.black);
-		text_output.setFont(new Font("Garamond", Font.PLAIN, 17));
+		text_output.setFont(new Font("Goudy Old Style", Font.PLAIN, 18));
 		
 		//create scroll area
 		scroll = new JScrollPane(text_output);

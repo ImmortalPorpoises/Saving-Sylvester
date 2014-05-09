@@ -81,11 +81,11 @@ public class Game {
 		{
 			if(part2.equals(currentEnvironment.getEnvironName()))
 			{
-				display.setOutput("You look around the " + currentEnvironment.getEnvironName());
+				display.setOutput("You look around the " + currentEnvironment.getEnvironName() + ".");
 				display.setOutput(currentEnvironment.getDescription());
 			} else
 			{
-				display.setOutput("You look at the " + part2);
+				display.setOutput("You look at the " + part2 + ".");
 				display.setOutput(currentEnvironment.getThingDescription(part2));
 			}
 		}
@@ -104,7 +104,7 @@ public class Game {
 				display.setOutput("The " + part2 + " has been added to your inventory");
 			} else
 			{
-				display.setOutput("You cannot put a " + part2 + " in your inventory. Do try to behave yourself or I will "
+				display.setOutput("You cannot put a " + part2 + " in your inventory. Do try to behave yourself, or I will "
 						+ "be forced to exterminate you.");
 			}
 		}
