@@ -86,7 +86,6 @@ public class Game {
 			} else
 			{
 				display.setOutput("You look at the " + part2);
-				display.setOutput("You attempt to examine the " + part2);
 				display.setOutput(currentEnvironment.getThingDescription(part2));
 			}
 		}
