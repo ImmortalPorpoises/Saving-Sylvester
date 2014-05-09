@@ -26,7 +26,7 @@ public class Game {
 		environments.add(g);
 		
 		//create an Image Display with its initial image
-    	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\palace_image.jpg");
+    	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\your_home.jpg");
 		display.setBackground(new Color(0, 0, 0));
 		
 		display.setOutput("We open at the close. You are in your room, sobbing violently in the fetal position holding a "
@@ -108,7 +108,7 @@ public class Game {
 			{
 				Inventory.add(currentEnvironment.sthings_in_environ.get(index));
 				currentEnvironment.sthings_in_environ.remove(index);
-				display.setOutput("The " + part2 + " has been added to your inventory");
+				display.setOutput("The " + part2 + " has been added to your inventory.");
 			} else
 			{
 				display.setOutput("You cannot put a " + part2 + " in your inventory. Do try to behave yourself, or I will "
@@ -123,6 +123,7 @@ public class Game {
 				display.setOutput("You cannot enter the " + part2);
 			} else
 			{
+				display.setOutput("You enter the " + part2 + ".");
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
 				display.setOutput(currentEnvironment.getDescription());
@@ -137,16 +138,33 @@ public class Game {
 			}
 			else
 			{
-				for(int index = 0; index < Inventory.size(); index++)
+				answer = "You have a ";
+				if(Inventory.size()==2)
 				{
-					display.setOutput(Inventory.get(index).getName());
+					answer = answer + Inventory.get(0).getName() + " and a " + Inventory.get(1).getName() + " in your inventory.";
+				} else
+				{
+					for(int index = 0; index < Inventory.size(); index++)
+					{
+						if(index==Inventory.size()-2)
+						{
+							answer = answer + Inventory.get(index).getName() + ", and a ";
+						} else if(index==Inventory.size()-1)
+						{
+							answer = answer + Inventory.get(index).getName() + " in your inventory.";
+						} else
+						{
+							answer = answer + Inventory.get(index).getName() + ", a ";
+						}
+					}
 				}
+				display.setOutput(answer);
 			}
 		}
 		
 		if(part1.equals("punch") || part1.equals("kick") || part1.contains("hit") && part2.equals("bear"))
 		{
-			display.setOutput("the bear snaps to life and begins to beat the ever loving mess out of you");
+			display.setOutput("the bear snaps to life and begins to beat the ever-loving mess out of you.");
 		}
 		
 		display.setUpdateValue(false);

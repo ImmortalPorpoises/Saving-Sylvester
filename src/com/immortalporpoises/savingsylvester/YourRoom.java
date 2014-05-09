@@ -22,7 +22,9 @@ public class YourRoom extends Environment {
 		sthings_in_environ.add(t);
 		
 		//add entrances and exits
+		Passage portal = new Passage("portal", "garden");
 		
+		entrances_and_exits.add(portal);
 	}
 
 }

@@ -6,8 +6,9 @@ public class Bed extends Thing
 {
 	public Bed()
 	{
-		name = "bunkbed";
-		description = "The covers of the upper bunk--your roommates's - are askew. You remember that you need to have a talk about keeping the room tidy.";
+		name = "bed";
+		description = "The covers of the upper bunk--your roommates's - are askew. You remember that you need"
+				+ " to have a talk about keeping the room tidy.";
 		collectable = false;
 	}
 }
