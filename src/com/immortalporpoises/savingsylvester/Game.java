@@ -14,8 +14,13 @@ public class Game {
 	private Environment currentEnvironment = new YourRoom();
 	private GameDisplay display;
 	private String answer = "42";
+<<<<<<< HEAD
 	private List<Thing> Inventory = new ArrayList<Thing>();
 	private List<Environment> environments = new ArrayList<Environment>();
+=======
+	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
+	
+>>>>>>> d14a4e75c5a9c74ce865de3e4c9869eab5809542
 	
 	public Game() {
 		
@@ -109,15 +114,27 @@ public class Game {
 						+ "be forced to exterminate you.");
 			}
 		}
-		
+
 		if(part1.equals("enter"))
 		{
 			if(currentEnvironment.getPassageName(part2)==null)
 			{
 				display.setOutput("You cannot enter the " + part2);
-			} else
-			{
+			}
+		}
 				
+		if(part1.equals("view") && part2.equals("inventory"))//print out the inventory has to be a part to
+		{
+			if(Inventory.isEmpty())
+			{
+				display.setOutput("you have pocket lint");//when you have nothing
+			}
+			else
+			{
+				for(int index = 0; index < Inventory.size(); index++)
+				{
+					display.setOutput(Inventory.get(index).getName());
+				}
 			}
 		}
 		
