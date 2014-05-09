@@ -39,7 +39,7 @@ public class GameDisplay extends JPanel {
 		user_input.setForeground(Color.white);
 		user_input.setBackground(Color.black);
 		user_input.setFont(new Font("Garamond", Font.PLAIN, 17));
-		
+				
 		//setup output area
 		text_output = new JTextArea("");
 		text_output.setEditable(false);
@@ -82,7 +82,7 @@ public class GameDisplay extends JPanel {
 						if(e.getKeyChar() == KeyEvent.VK_ENTER)
 						{
 	                        outcome = user_input.getText();                 
-	                        user_input.setText("");
+	                        user_input.setText(null);
 	                        update = true;
 	                    }
 					}
