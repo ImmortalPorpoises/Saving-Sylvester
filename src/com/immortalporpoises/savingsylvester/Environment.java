@@ -61,4 +61,16 @@ public abstract class Environment {
 		}
 		return null;
 	}
+	
+	public String getPassagDestination(String passage_name)
+	{
+		for(int i = 0; i<entrances_and_exits.size(); i++)
+		{
+			if(passage_name.equals(entrances_and_exits.get(i).getName()))
+			{
+				return entrances_and_exits.get(i).getDestination();
+			}
+		}
+		return null;
+	}
 }

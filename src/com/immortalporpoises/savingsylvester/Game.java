@@ -19,6 +19,12 @@ public class Game {
 	
 	public Game() {
 		
+		//initialize environments
+		Environment y = new YourRoom();
+		Environment g = new GardenIntro();
+		environments.add(y);
+		environments.add(g);
+		
 		//create an Image Display with its initial image
     	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\palace_image.jpg");
 		display.setBackground(new Color(0, 0, 0));
@@ -115,6 +121,11 @@ public class Game {
 			if(currentEnvironment.getPassageName(part2)==null)
 			{
 				display.setOutput("You cannot enter the " + part2);
+			} else
+			{
+				String passage_leads = currentEnvironment.getPassagDestination(part2);
+				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
+				display.setOutput(currentEnvironment.getDescription());
 			}
 		}
 				
@@ -122,7 +133,7 @@ public class Game {
 		{
 			if(Inventory.isEmpty())
 			{
-				display.setOutput("you have pocket lint");//when you have nothing
+				display.setOutput("you have pocket lint.");//when you have nothing
 			}
 			else
 			{
@@ -143,6 +154,18 @@ public class Game {
 			answer = display.getInputText();
 			this.parseText(answer);
 		}
+	}
+	
+	public int getEnvironIndex(String environ_name)
+	{
+		for(int i = 0; i<environments.size(); i++)
+		{
+			if(environments.get(i).getEnvironName().equals(environ_name))
+			{
+				return i;
+			}
+		}
+		return -1;
 	}
 
 }
