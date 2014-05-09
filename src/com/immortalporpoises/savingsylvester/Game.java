@@ -14,7 +14,8 @@ public class Game {
 	private Environment currentEnvironment = new YourRoom();
 	private GameDisplay display;
 	private String answer = "42";
-	private List<Thing> Inventory = new ArrayList<Thing>();
+	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
+	
 	
 	public Game() {
 		
@@ -106,6 +107,21 @@ public class Game {
 			{
 				display.setOutput("You cannot put a " + part2 + " in your inventory. Do try to behave yourself, or I will "
 						+ "be forced to exterminate you.");
+			}
+		}
+		
+		if(part1.equals("view") && part2.equals("inventory"))//print out the inventory has to be a part to
+		{
+			if(Inventory.isEmpty())
+			{
+				display.setOutput("you have pocket lint");//when you have nothing
+			}
+			else
+			{
+				for(int index = 0; index < Inventory.size(); index++)
+				{
+					display.setOutput(Inventory.get(index).getName());
+				}
 			}
 		}
 		
