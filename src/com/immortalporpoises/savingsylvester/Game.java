@@ -90,7 +90,7 @@ public class Game {
 			}
 		}
 		
-		if(part1.equals("get"))
+		if(part1.equals("get") || part1.equals("take"))
 		{
 			int index = currentEnvironment.getThingIndex(part2);
 			if(index==-1)
