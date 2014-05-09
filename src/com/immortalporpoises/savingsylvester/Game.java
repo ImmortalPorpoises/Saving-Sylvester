@@ -14,13 +14,8 @@ public class Game {
 	private Environment currentEnvironment = new YourRoom();
 	private GameDisplay display;
 	private String answer = "42";
-<<<<<<< HEAD
-	private List<Thing> Inventory = new ArrayList<Thing>();
 	private List<Environment> environments = new ArrayList<Environment>();
-=======
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
-	
->>>>>>> d14a4e75c5a9c74ce865de3e4c9869eab5809542
 	
 	public Game() {
 		
