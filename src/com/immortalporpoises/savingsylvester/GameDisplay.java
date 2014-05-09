@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 
 public class GameDisplay extends JPanel {
 
@@ -38,7 +39,7 @@ public class GameDisplay extends JPanel {
 		user_input.setForeground(Color.white);
 		user_input.setBackground(Color.black);
 		user_input.setFont(new Font("Garamond", Font.PLAIN, 17));
-		
+				
 		//setup output area
 		text_output = new JTextArea("");
 		text_output.setEditable(false);
@@ -55,6 +56,9 @@ public class GameDisplay extends JPanel {
 		scroll = new JScrollPane(text_output);
 		scroll.setBounds(513, 0, 500, 562);
 		scroll.setAutoscrolls(true);
+		DefaultCaret caret = (DefaultCaret)text_output.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		scroll.setViewportView(text_output);
 		this.add(scroll);
 		
 		//check for enter keypress
@@ -77,7 +81,7 @@ public class GameDisplay extends JPanel {
 						if(e.getKeyChar() == KeyEvent.VK_ENTER)
 						{
 	                        outcome = user_input.getText();                 
-	                        user_input.setText("");
+	                        user_input.setText(null);
 	                        update = true;
 	                    }
 					}

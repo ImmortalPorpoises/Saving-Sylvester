@@ -47,16 +47,13 @@ public class Game {
 		answer = answer.trim();
 		
 		String[] parts = answer.split(" ");
-		String part1 = "test";
-		String part2 = "test 2";
+		String part1 = "";
+		String part2 = "";
 		if (parts.length == 2)
 		{
 		     part1 = parts[0];
 		     part2 = parts[1];
 		}
-		
-		System.out.println(part1);
-		System.out.println(part2);
 		System.out.println(answer);
 		
 		if(part1.equals("go"))
@@ -80,7 +77,7 @@ public class Game {
 			}
 		}
 		
-		if(part1.equals("look"))
+		if(part1.equals("look") || part1.equals("examine"))
 		{
 			if(part2.equals(currentEnvironment.getEnvironName()))
 			{
@@ -89,6 +86,7 @@ public class Game {
 			} else
 			{
 				display.setOutput("You look at the " + part2);
+				display.setOutput("You attempt to examine the " + part2);
 				display.setOutput(currentEnvironment.getThingDescription(part2));
 			}
 		}
