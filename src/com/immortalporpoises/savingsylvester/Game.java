@@ -16,7 +16,7 @@ public class Game {
 	private String answer = "42";
 	private List<Environment> environments = new ArrayList<Environment>();
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
-	
+
 	public Game() {
 		
 		//initialize environments
@@ -142,6 +142,11 @@ public class Game {
 					display.setOutput(Inventory.get(index).getName());
 				}
 			}
+		}
+		
+		if(part1.equals("punch") || part1.equals("kick") || part1.contains("hit") && part2.equals("bear"))
+		{
+			display.setOutput("the bear snaps to life and begins to beat the ever loving mess out of you");
 		}
 		
 		display.setUpdateValue(false);

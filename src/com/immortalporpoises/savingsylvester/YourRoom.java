@@ -20,6 +20,9 @@ public class YourRoom extends Environment {
 		sthings_in_environ.add(d);
 		sthings_in_environ.add(w);
 		sthings_in_environ.add(t);
+		
+		//add entrances and exits
+		
 	}
 
 }
