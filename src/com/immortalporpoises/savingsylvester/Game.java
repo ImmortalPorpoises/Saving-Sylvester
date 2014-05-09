@@ -15,6 +15,7 @@ public class Game {
 	private GameDisplay display;
 	private String answer = "42";
 	private List<Thing> Inventory = new ArrayList<Thing>();
+	private List<Environment> environments = new ArrayList<Environment>();
 	
 	public Game() {
 		
@@ -106,6 +107,17 @@ public class Game {
 			{
 				display.setOutput("You cannot put a " + part2 + " in your inventory. Do try to behave yourself, or I will "
 						+ "be forced to exterminate you.");
+			}
+		}
+		
+		if(part1.equals("enter"))
+		{
+			if(currentEnvironment.getPassageName(part2)==null)
+			{
+				display.setOutput("You cannot enter the " + part2);
+			} else
+			{
+				
 			}
 		}
 		
