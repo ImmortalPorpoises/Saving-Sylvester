@@ -14,13 +14,10 @@ public class Game {
 	private Environment currentEnvironment = new YourRoom();
 	private GameDisplay display;
 	private String answer = "42";
-<<<<<<< HEAD
-	private List<Thing> Inventory = new ArrayList<Thing>();
 	private List<Environment> environments = new ArrayList<Environment>();
-=======
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
 	
->>>>>>> d14a4e75c5a9c74ce865de3e4c9869eab5809542
+
 	
 	public Game() {
 		
@@ -136,6 +133,11 @@ public class Game {
 					display.setOutput(Inventory.get(index).getName());
 				}
 			}
+		}
+		
+		if(part1.equals("punch") || part1.equals("kick") || part1.contains("hit") && part2.equals("bear"))
+		{
+			display.setOutput("the bear snaps to life and begins to beat the ever loving mess out of you");
 		}
 		
 		display.setUpdateValue(false);
