@@ -14,7 +14,10 @@ public class Game {
 	private Environment currentEnvironment = new YourRoom();
 	private GameDisplay display;
 	private String answer = "42";
-	private List<Thing> Inventory = new ArrayList<Thing>();
+	private List<Environment> environments = new ArrayList<Environment>();
+	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
+	
+
 	
 	public Game() {
 		
@@ -107,6 +110,34 @@ public class Game {
 				display.setOutput("You cannot put a " + part2 + " in your inventory. Do try to behave yourself, or I will "
 						+ "be forced to exterminate you.");
 			}
+		}
+
+		if(part1.equals("enter"))
+		{
+			if(currentEnvironment.getPassageName(part2)==null)
+			{
+				display.setOutput("You cannot enter the " + part2);
+			}
+		}
+				
+		if(part1.equals("view") && part2.equals("inventory"))//print out the inventory has to be a part to
+		{
+			if(Inventory.isEmpty())
+			{
+				display.setOutput("you have pocket lint");//when you have nothing
+			}
+			else
+			{
+				for(int index = 0; index < Inventory.size(); index++)
+				{
+					display.setOutput(Inventory.get(index).getName());
+				}
+			}
+		}
+		
+		if(part1.equals("punch") || part1.equals("kick") || part1.contains("hit") && part2.equals("bear"))
+		{
+			display.setOutput("the bear snaps to life and begins to beat the ever loving mess out of you");
 		}
 		
 		display.setUpdateValue(false);

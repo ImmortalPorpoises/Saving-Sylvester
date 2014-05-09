@@ -13,11 +13,13 @@ public class YourRoom extends Environment {
 		Bed b = new Bed();
 		Desk d = new Desk();
 		Woman w = new Woman();
+		TeddyBear t = new TeddyBear();
 		
 		//add them to the array of things in the room
 		sthings_in_environ.add(b);
 		sthings_in_environ.add(d);
 		sthings_in_environ.add(w);
+		sthings_in_environ.add(t);
 	}
 
 }
