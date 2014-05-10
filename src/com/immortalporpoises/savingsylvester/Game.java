@@ -41,10 +41,18 @@ public class Game {
     	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\your_home.jpg");
 		display.setBackground(new Color(0, 0, 0));
 		
-		display.setOutput("We open at the close. You are in your room, sobbing violently in the fetal position holding a "
-				+ "giant pink fluffy teddy bear. You throw the teddy bear across the room, walk intently to your computer, "
-				+ "and promptly begin whining to the world through various social medias. Strangely enough, you are suddenly "
-				+ "struck by the feeling that someone is watching you. You rise from your desk to look around.");
+		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
+				+ "i.e. “look room,” “examine bear,” “take bear,” “enter door,” etc. \nTo view your inventory, simply "
+				+ "type “view inventory.” To get help, type “help me.” Case and punctuation do not matter."
+				+ "\n\n“…and so Sylvester breathed his last. \n The End.” \n\n    We open at the close."
+				+ "\n    You snap the book shut—it’s the latest work by your favorite fantasy author, P.F. Tollers—and"
+				+ " wipe a tear away. “Why did Sylvester have to die?” you wonder out loud. “He was the best "
+				+ "character in the series.” This thought overcomes you, and you break down in pitiful sobs."
+				+ "\n    Time passes, and a few hours later, you are in your room, sobbing violently in the fetal position"
+				+ " and holding a giant pink fluffy teddy bear. You throw the teddy bear across the room, walk "
+				+ "intently to your computer and promptly begin whining to the world through various social "
+				+ "medias. Strangely enough, you are suddenly struck by the feeling that someone is watching you. "
+				+ "You rise from your desk to look around.");
 		
 		//create the JFrame and add the display to it
     	JFrame frame = new JFrame();
@@ -64,6 +72,10 @@ public class Game {
 	{
 		answer = answer.toLowerCase();
 		answer = answer.trim();
+		if(answer.endsWith("."))
+		{
+			answer = answer.replace(".", "");
+		}
 		
 		String[] parts = answer.split(" ");
 		String part1 = "";
@@ -75,6 +87,13 @@ public class Game {
 		}
 		System.out.println(answer);
 		
+		if(part1.equals("help") && part2.equals("me"))
+		{
+			display.setOutput("You want assistance? Do this without resistance: don't panic, take a deep breath, and"
+					+ " remember this isn't a matter of life and death."
+					+ "\n    If you're unsatisfied with this level of aid, please contact my programmer without"
+					+ " delay. Oh, and have a nice day!");
+		}
 		if(part1.equals("go"))
 		{
 			Environment[][] move_array = new Environment[3][3];
