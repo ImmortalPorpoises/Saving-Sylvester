@@ -15,7 +15,11 @@ public class Game {
 	private GameDisplay display;
 	private String answer = "42";
 	private List<Environment> environments = new ArrayList<Environment>();
+	private Environment[][] garden = new Environment[3][3];//the garden area array
+	private Environment[][] your_room = new Environment[1][1]; //the starting room array
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
+	private int x_index = 0;
+	private int y_index = 0;
 
 	public Game() {
 		
@@ -25,6 +29,14 @@ public class Game {
 		environments.add(y);
 		environments.add(g);
 		
+		//add garden areas to the garden array to enable n/s/e/w navigation
+		for(int i = 0; i < 3; i++)
+		{
+			for(int j = 0; j < 3; j++)
+			{
+				garden[i][j] = g;
+			}
+		}
 		//create an Image Display with its initial image
     	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\your_home.jpg");
 		display.setBackground(new Color(0, 0, 0));
@@ -65,22 +77,61 @@ public class Game {
 		
 		if(part1.equals("go"))
 		{
+			Environment[][] move_array = new Environment[3][3];
+			
+			if(currentEnvironment.getEnvironName().equals("garden"))
+			{
+				move_array = garden;
+			}
+			if(currentEnvironment.getEnvironName().equals("room"))
+			{
+				move_array = your_room;
+			}
+			
 			if(part2.equals("north"))
 			{
-				answer = "n";
+				if(y_index-1>=0)
+				{
+					currentEnvironment = move_array[x_index][y_index-1];
+					display.setOutput(currentEnvironment.getDescription());
+				} else
+				{
+					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
+				}
 			}
 			if(part2.equals("south"))
 			{
-				answer = "s";
+				if(y_index+1<move_array[x_index].length)
+				{
+					currentEnvironment = move_array[x_index][y_index+1];
+					display.setOutput(currentEnvironment.getDescription());
+				} else
+				{
+					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
+				}
 			}
 			if(part2.equals("west"))
 			{
-				answer = "w";
+				if(x_index-1>=0)
+				{
+					currentEnvironment = move_array[x_index-1][y_index];
+					display.setOutput(currentEnvironment.getDescription());
+				} else
+				{
+					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
+				}
 			}
 			
 			if(part2.equals("east"))
 			{
-				answer = "e";
+				if(x_index+1<move_array.length)
+				{
+					currentEnvironment = move_array[x_index+1][y_index];
+					display.setOutput(currentEnvironment.getDescription());
+				} else
+				{
+					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
+				}
 			}
 		}
 		
@@ -120,7 +171,7 @@ public class Game {
 		{
 			if(currentEnvironment.getPassageName(part2)==null)
 			{
-				display.setOutput("You cannot enter the " + part2);
+				display.setOutput("You cannot enter the " + part2 + ".");
 			} else
 			{
 				display.setOutput("You enter the " + part2 + ".");
