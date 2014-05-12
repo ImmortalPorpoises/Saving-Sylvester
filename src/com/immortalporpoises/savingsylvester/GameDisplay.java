@@ -22,6 +22,8 @@ public class GameDisplay extends JPanel {
 	/*
 	* Create an ImageViewer show it on screen.
 	*/
+	
+	
 	public GameDisplay(String file_directory)
 	{
 		this.setLayout(null);
