@@ -1,15 +1,19 @@
 package com.immortalporpoises.savingsylvester;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.lang.Class;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class Game{
 
+	
 	//variables that store the current environment, the game display window, and the 
 	private Environment currentEnvironment = new YourRoom();
 	private GameDisplay display;
@@ -54,8 +58,9 @@ public class Game {
 				+ "media. Strangely enough, you are suddenly struck by the feeling that someone is watching you. "
 				+ "You rise from your desk to look around.");
 		
+				
 		//create the JFrame and add the display to it
-    	JFrame frame = new JFrame();
+        JFrame frame = new JFrame();
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(display);
 		frame.setSize(1024, 600);
