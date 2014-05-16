@@ -37,6 +37,7 @@ public class Game{
 		//initialize environments
 		Environment y = new YourRoom();
 		Environment g = new GardenIntro();
+		Environment h = new WestGarden();
 		environments.add(y);
 		environments.add(g);
 		
@@ -48,6 +49,8 @@ public class Game{
 				garden[i][j] = g;
 			}
 		}
+		
+		garden[0][1] = h; //hey Nathan, this is where we add the environments to the garden
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
 				+ "i.e. \"look room,\" \"examine bear,\" \"take bear,\" \"enter door,\" etc. \nTo view your inventory, simply "
