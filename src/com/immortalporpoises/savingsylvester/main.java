@@ -9,8 +9,8 @@ public class main
 {
 	public static void main (String[] args)
 	{
-		Thread music = new Audio();
-		music.start();
+		//Thread music = new Audio();
+		//music.start();
 		Game game = new Game();
 	}
 }
