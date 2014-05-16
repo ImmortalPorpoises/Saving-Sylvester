@@ -7,7 +7,8 @@ public class YourRoom extends Environment {
 		environ_name = "room";
 		
 		//the description
-		entry_description = "Your room is very small and dimly lit - it is late at night, after all. One one side of the room is a bunkbed you share with your roommmate. On the opposite end is your desk, stacked with papers and with a computer on top of it. A mysterious woman stands in the middle of the room, tapping her foot.";
+		entry_description = "Upon entering your room, you are struck by a musty odor.";
+		main_description = "Your room is very small and dimly lit - it is late at night, after all. One one side of the room is a bunkbed you share with your roommmate. On the opposite end is your desk, stacked with papers and with a computer on top of it. A mysterious woman stands in the middle of the room, tapping her foot.";
 		
 		//create things in room
 		Bed b = new Bed();
