@@ -17,7 +17,7 @@ public class Game{
 	private JFrame frame;
 	private JPanel panel;
 	private Environment currentEnvironment = new YourRoom();
-	private GameDisplay display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\your_home.jpg");
+	private GameDisplay display = new GameDisplay("Pictures/your_home.jpg");
 	private String answer = "42";
 	private List<Environment> environments = new ArrayList<Environment>();
 	private Environment[][] garden = new Environment[3][3];//the garden area array
@@ -50,12 +50,12 @@ public class Game{
 		}
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
-				+ "i.e. “look room,” “examine bear,” “take bear,” “enter door,” etc. \nTo view your inventory, simply "
-				+ "type “view inventory.” To get help, type “help me.” Case and punctuation do not matter."
-				+ "\n\n“…and so Sylvester breathed his last. \n The End.” \n\n    We open at the close."
-				+ "\n    You snap the book shut—it’s the latest work by your favorite fantasy author, P.F. Tollers—and"
-				+ " wipe a tear away. “Why did Sylvester have to die?” you wonder out loud. “He was the best "
-				+ "character in the series.” This thought overcomes you, and you break down in pitiful sobs."
+				+ "i.e. ï¿½look room,ï¿½ ï¿½examine bear,ï¿½ ï¿½take bear,ï¿½ ï¿½enter door,ï¿½ etc. \nTo view your inventory, simply "
+				+ "type ï¿½view inventory.ï¿½ To get help, type ï¿½help me.ï¿½ Case and punctuation do not matter."
+				+ "\n\nï¿½ï¿½and so Sylvester breathed his last. \n The End.ï¿½ \n\n    We open at the close."
+				+ "\n    You snap the book shutï¿½itï¿½s the latest work by your favorite fantasy author, P.F. Tollersï¿½and"
+				+ " wipe a tear away. ï¿½Why did Sylvester have to die?ï¿½ you wonder out loud. ï¿½He was the best "
+				+ "character in the series.ï¿½ This thought overcomes you, and you break down in pitiful sobs."
 				+ "\n    Time passes, and a few hours later, you are in your room, sobbing violently in the fetal position"
 				+ " and holding a giant pink fluffy teddy bear. You throw the teddy bear across the room, walk "
 				+ "intently to your computer and promptly begin whining to the world through various social "
