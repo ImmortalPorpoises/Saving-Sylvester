@@ -108,7 +108,7 @@ public class GameDisplay extends JPanel {
 	
 	public void setOutput(String output)
 	{
-		text_output.setText(text_output.getText().trim() + "\n    " + output);
+		text_output.setText(text_output.getText().trim() + "\n______________________________________\n    " + output);
 	}
 	
 	public String getInputText()

@@ -9,6 +9,9 @@ public abstract class Environment {
 	protected List<Thing> sthings_in_environ = new ArrayList<Thing>();
 	protected List<Passage> entrances_and_exits = new ArrayList<Passage>();
 	protected String entry_description;
+	protected String main_description = "The area suddenly becomes vague and abstract. You suspect that this area might"
+			+ " not have defined a specific description for itself and that it's using the abstract superclass's default"
+			+ " description instead.";
 	protected String environ_name;
 	
 	public Environment()
@@ -20,9 +23,14 @@ public abstract class Environment {
 	{
 		return environ_name;
 	}
-	public String getDescription()
+	public String getEntryDescription()
 	{
 		return entry_description;
+	}
+	
+	public String getDescription()
+	{
+		return main_description;
 	}
 	
 	public String getThingDescription(String thing_name)

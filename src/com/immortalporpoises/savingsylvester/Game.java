@@ -113,7 +113,7 @@ public class Game{
 				if(y_index-1>=0)
 				{
 					currentEnvironment = move_array[x_index][y_index-1];
-					display.setOutput(currentEnvironment.getDescription());
+					display.setOutput(currentEnvironment.getEntryDescription());
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -124,7 +124,7 @@ public class Game{
 				if(y_index+1<move_array[x_index].length)
 				{
 					currentEnvironment = move_array[x_index][y_index+1];
-					display.setOutput(currentEnvironment.getDescription());
+					display.setOutput(currentEnvironment.getEntryDescription());
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -135,7 +135,7 @@ public class Game{
 				if(x_index-1>=0)
 				{
 					currentEnvironment = move_array[x_index-1][y_index];
-					display.setOutput(currentEnvironment.getDescription());
+					display.setOutput(currentEnvironment.getEntryDescription());
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -147,7 +147,7 @@ public class Game{
 				if(x_index+1<move_array.length)
 				{
 					currentEnvironment = move_array[x_index+1][y_index];
-					display.setOutput(currentEnvironment.getDescription());
+					display.setOutput(currentEnvironment.getEntryDescription());
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -197,7 +197,7 @@ public class Game{
 				display.setOutput("You enter the " + part2 + ".");
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
-				display.setOutput(currentEnvironment.getDescription());
+				display.setOutput(currentEnvironment.getEntryDescription());
 			}
 		}
 				
