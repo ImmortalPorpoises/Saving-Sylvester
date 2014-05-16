@@ -16,5 +16,4 @@ public class TextInputPanel extends JPanel {
 		JTextArea user_input = new JTextArea();
 		this.add(user_input);
 	}
-
 }

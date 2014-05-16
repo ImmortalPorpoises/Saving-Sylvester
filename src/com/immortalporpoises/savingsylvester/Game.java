@@ -6,17 +6,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import java.lang.Class;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game{
-
-	
 	//variables that store the current environment, the game display window, and the 
+	private JFrame frame;
+	private JPanel panel;
 	private Environment currentEnvironment = new YourRoom();
-	private GameDisplay display;
+	private GameDisplay display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\your_home.jpg");
 	private String answer = "42";
 	private List<Environment> environments = new ArrayList<Environment>();
 	private Environment[][] garden = new Environment[3][3];//the garden area array
@@ -25,8 +26,14 @@ public class Game{
 	private int x_index = 0;
 	private int y_index = 0;
 
-	public Game() {
-		
+	public Game()
+	{
+		//create the JFrame and add the display to it
+	    frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(1024, 600);
+		frame.setVisible(true);
+		frame.add(display);
 		//initialize environments
 		Environment y = new YourRoom();
 		Environment g = new GardenIntro();
@@ -41,9 +48,6 @@ public class Game{
 				garden[i][j] = g;
 			}
 		}
-		//create an Image Display with its initial image
-    	display = new GameDisplay("src\\com\\immortalporpoises\\savingsylvester\\your_home.jpg");
-		display.setBackground(new Color(0, 0, 0));
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
 				+ "i.e. “look room,” “examine bear,” “take bear,” “enter door,” etc. \nTo view your inventory, simply "
@@ -57,14 +61,6 @@ public class Game{
 				+ "intently to your computer and promptly begin whining to the world through various social "
 				+ "media. Strangely enough, you are suddenly struck by the feeling that someone is watching you. "
 				+ "You rise from your desk to look around.");
-		
-				
-		//create the JFrame and add the display to it
-        JFrame frame = new JFrame();
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(display);
-		frame.setSize(1024, 600);
-		frame.setVisible(true);
 		
 		//continue to update the game until the user exits the window
 		for(;;)
