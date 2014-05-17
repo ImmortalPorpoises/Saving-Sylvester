@@ -37,6 +37,7 @@ public class Game{
 		//initialize environments
 		Environment y = new YourRoom();
 		Environment g = new GardenIntro();
+		Environment z = new SecondGardenArea();
 		Environment h = new WestGarden();
 		environments.add(y);
 		environments.add(g);
@@ -50,6 +51,7 @@ public class Game{
 			}
 		}
 		
+		garden[1][0] = z;
 		garden[0][1] = h; //hey Nathan, this is where we add the environments to the garden
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
@@ -98,6 +100,10 @@ public class Game{
 					+ "\n    If you're unsatisfied with this level of aid, please contact my programmer without"
 					+ " delay. Oh, and have a nice day!");
 		}
+		if(part1.equals("kill") && part2.equals("myself"))
+		{
+			System.exit(0);
+		}
 		if(part1.equals("go"))
 		{
 			Environment[][] move_array = new Environment[3][3];
@@ -113,9 +119,10 @@ public class Game{
 			
 			if(part2.equals("north"))
 			{
-				if(y_index-1>=0)
+				if(y_index > 0)
 				{
-					currentEnvironment = move_array[x_index][y_index-1];
+					y_index = y_index - 1;
+					currentEnvironment = move_array[x_index][y_index];
 					display.setOutput(currentEnvironment.getEntryDescription());
 				} else
 				{
@@ -124,9 +131,10 @@ public class Game{
 			}
 			if(part2.equals("south"))
 			{
-				if(y_index+1<move_array[x_index].length)
+				if(y_index < 3)
 				{
-					currentEnvironment = move_array[x_index][y_index+1];
+					y_index = y_index + 1;
+					currentEnvironment = move_array[x_index][y_index];
 					display.setOutput(currentEnvironment.getEntryDescription());
 				} else
 				{
@@ -135,9 +143,10 @@ public class Game{
 			}
 			if(part2.equals("west"))
 			{
-				if(x_index-1>=0)
+				if(x_index > 0)
 				{
-					currentEnvironment = move_array[x_index-1][y_index];
+					x_index = x_index - 1;
+					currentEnvironment = move_array[x_index][y_index];
 					display.setOutput(currentEnvironment.getEntryDescription());
 				} else
 				{
@@ -147,9 +156,10 @@ public class Game{
 			
 			if(part2.equals("east"))
 			{
-				if(x_index+1<move_array.length)
+				if(x_index < 3)
 				{
-					currentEnvironment = move_array[x_index+1][y_index];
+					x_index = x_index + 1;
+					currentEnvironment = move_array[x_index][y_index];
 					display.setOutput(currentEnvironment.getEntryDescription());
 				} else
 				{
