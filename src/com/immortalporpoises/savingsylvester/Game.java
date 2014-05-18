@@ -223,10 +223,19 @@ public class Game{
 
 		if(part1.equals("enter"))
 		{
+			Environment[][] move_array = new Environment[3][3];
+			
 			if(currentEnvironment.getPassageName(part2)==null)
 			{
 				display.setOutput("You cannot enter the " + part2 + ".");
-			} else
+			}
+			else if(currentEnvironment.getEnvironName().equals("dungeon"))
+			{
+				move_array = garden;
+				currentEnvironment = move_array[2][2];
+				display.setOutput(currentEnvironment.getEntryDescription());
+			}
+			else
 			{
 				display.setOutput("You enter the " + part2 + ".");
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
