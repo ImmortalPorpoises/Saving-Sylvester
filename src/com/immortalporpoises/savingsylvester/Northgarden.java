@@ -1,8 +1,8 @@
 package com.immortalporpoises.savingsylvester;
 
-public final class SecondGardenArea extends Environment {
+public final class Northgarden extends Environment {
 
-	public SecondGardenArea()
+	public Northgarden()
 	{		
 		//give the garden area a name
 		environ_name = "garden";

@@ -22,6 +22,7 @@ public class Game{
 	private List<Environment> environments = new ArrayList<Environment>();
 	private Environment[][] garden = new Environment[3][3];//the garden area array
 	private Environment[][] your_room = new Environment[1][1]; //the starting room array
+	private Environment[][] dungeon = new Environment[3][3];//the dungeon area array
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
 	private int x_index = 0;
 	private int y_index = 0;
@@ -36,12 +37,20 @@ public class Game{
 		frame.add(display);
 		//initialize environments
 		Environment y = new YourRoom();
-		Environment g = new GardenIntro();
-		Environment z = new SecondGardenArea();
+		Environment g = new Northwestgarden();
+		Environment dun = new Northwestdungeon();
+		Environment z = new Northgarden();
 		Environment h = new WestGarden();
-		Environment q = new SouthWest();
+		Environment q = new Southwestgarden();
+		Environment c = new Centergarden();
+		Environment w = new Northeastgarden();
+		Environment t = new Eastgarden();
+		Environment d = new Southeastgarden();
+		Environment s = new Southgarden();
+		
 		environments.add(y);
 		environments.add(g);
+		environments.add(dun);
 		
 		//add garden areas to the garden array to enable n/s/e/w navigation
 		for(int i = 0; i < 3; i++)
@@ -49,12 +58,19 @@ public class Game{
 			for(int j = 0; j < 3; j++)
 			{
 				garden[i][j] = g;
+				dungeon[i][j] = dun;
 			}
 		}
 		//[col][row]
 		garden[1][0] = z;
 		garden[0][1] = h; //hey Nathan, this is where we add the environments to the garden
 		garden[0][2] = q;
+		garden[1][1] = c;
+		garden[2][0] = w;
+		garden[2][1] = t;
+		garden[2][2] = d;
+		garden[1][2] = s;
+		
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
 				+ "i.e. \"look room,\" \"examine bear,\" \"take bear,\" \"enter door,\" etc. \nTo view your inventory, simply "
@@ -118,7 +134,10 @@ public class Game{
 			{
 				move_array = your_room;
 			}
-			
+			if(currentEnvironment.getEnvironName().equals("dungeon"))
+			{
+				move_array = dungeon;
+			}
 			if(part2.equals("north"))
 			{
 				if(y_index > 0)
