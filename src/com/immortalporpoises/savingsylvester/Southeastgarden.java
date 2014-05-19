@@ -13,6 +13,7 @@ public final class Southeastgarden extends Environment
 				+ " breeze is chilly on your skin.";
 		main_description = "You look closely at the grass and see a small hole, just big enough for a person to enter.";
 		
+		//passage to dungeon
 		Passage hole = new Passage("hole", "dungeon");		
 		entrances_and_exits.add(hole);
 	}
