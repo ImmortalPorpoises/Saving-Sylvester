@@ -23,6 +23,7 @@ public class Game{
 	private Environment[][] garden = new Environment[3][3];//the garden area array
 	private Environment[][] your_room = new Environment[1][1]; //the starting room array
 	private Environment[][] dungeon = new Environment[3][3];//the dungeon area array
+	private Environment[][] jailcell = new Environment[1][1]; //the jail cell array
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
 	private int x_index = 0;
 	private int y_index = 0;
@@ -36,40 +37,47 @@ public class Game{
 		frame.setVisible(true);
 		frame.add(display);
 		//initialize environments
-		Environment y = new YourRoom();
-		Environment g = new Northwestgarden();
-		Environment dun = new Northwestdungeon();
-		Environment z = new Northgarden();
-		Environment h = new WestGarden();
-		Environment q = new Southwestgarden();
-		Environment c = new Centergarden();
-		Environment w = new Northeastgarden();
-		Environment t = new Eastgarden();
-		Environment d = new Southeastgarden();
-		Environment s = new Southgarden();
+		Environment room = new YourRoom();
+		Environment nwg = new Northwestgarden();
+		Environment nwd = new Northwestdungeon();
+		Environment jc = new jailcell();
+		Environment ng = new Northgarden();
+		Environment wg = new WestGarden();
+		Environment swg = new Southwestgarden();
+		Environment cg = new Centergarden();
+		Environment neg = new Northeastgarden();
+		Environment eg = new Eastgarden();
+		Environment seg = new Southeastgarden();
+		Environment sg = new Southgarden();
+		Environment wd = new Westdungeon();
+		Environment swd = new Southwestdungeon();
 		
-		environments.add(y);
-		environments.add(g);
-		environments.add(dun);
+		environments.add(jc);
+		environments.add(room);
+		environments.add(nwg);
+		environments.add(nwd);
 		
 		//add garden areas to the garden array to enable n/s/e/w navigation
 		for(int i = 0; i < 3; i++)
 		{
 			for(int j = 0; j < 3; j++)
 			{
-				garden[i][j] = g;
-				dungeon[i][j] = dun;
+				garden[i][j] = nwg;
+				dungeon[i][j] = nwd;
 			}
 		}
-		//[col][row]
-		garden[1][0] = z;
-		garden[0][1] = h; //hey Nathan, this is where we add the environments to the garden
-		garden[0][2] = q;
-		garden[1][1] = c;
-		garden[2][0] = w;
-		garden[2][1] = t;
-		garden[2][2] = d;
-		garden[1][2] = s;
+		// garden area [col][row]
+		garden[1][0] = ng;
+		garden[0][1] = wg; 
+		garden[0][2] = swg;
+		garden[1][1] = cg;
+		garden[2][0] = neg;
+		garden[2][1] = eg;
+		garden[2][2] = seg;
+		garden[1][2] = sg;
+		// dungeon area [col][row]
+		dungeon[0][1] = wd;
+		dungeon[0][2] = swd;
 		
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
@@ -137,6 +145,10 @@ public class Game{
 			if(currentEnvironment.getEnvironName().equals("dungeon"))
 			{
 				move_array = dungeon;
+			}
+			if(currentEnvironment.getEnvironName().equals("jailcell"))
+			{
+				move_array = jailcell;
 			}
 			if(part2.equals("north"))
 			{
@@ -232,18 +244,27 @@ public class Game{
 			else if(currentEnvironment.getEnvironName().equals("dungeon"))
 			{
 				move_array = garden;
+				display.setOutput("You enter the " + part2 + ".");
 				currentEnvironment = move_array[2][2];
+				display.setOutput(currentEnvironment.getEntryDescription());
+			}
+			else if(currentEnvironment.getEnvironName().equals("jailcell"))
+			{
+				move_array = dungeon;
+				display.setOutput("You exit the " + part2 + ".");
+				currentEnvironment = move_array[0][2];
 				display.setOutput(currentEnvironment.getEntryDescription());
 			}
 			else
 			{
+				x_index = 0;
+				y_index = 0;
 				display.setOutput("You enter the " + part2 + ".");
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
 				display.setOutput(currentEnvironment.getEntryDescription());
 			}
-		}
-				
+		}				
 		if(part1.equals("view") && part2.equals("inventory"))//print out the inventory has to be a part to
 		{
 			if(Inventory.isEmpty())

@@ -11,7 +11,7 @@ public final class Southeastgarden extends Environment
 		//entry description
 		entry_description = "TBA";
 		
-Passage hole = new Passage("hole", "dungeon");
+		Passage hole = new Passage("hole", "dungeon");
 		
 		entrances_and_exits.add(hole);
 	}
