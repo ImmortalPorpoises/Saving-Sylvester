@@ -11,7 +11,7 @@ import javax.swing.text.DefaultCaret;
 
 public class GameDisplay extends JPanel {
 
-	private JPanel imagepanel;
+	private JLabel image_label;
 	private JTextArea text_output;
 	private JScrollPane scroll;
 	private boolean update;
@@ -30,7 +30,7 @@ public class GameDisplay extends JPanel {
 		
 		//setup image
 		Icon icon = new ImageIcon(openImage(file_directory));
-		JLabel image_label = new JLabel(icon);
+		image_label = new JLabel(icon);
 		image_label.setBounds(0, 0, 512, 300);
 		this.add(image_label);
 		
@@ -125,5 +125,13 @@ public class GameDisplay extends JPanel {
 	{
 		update = upval;
 	}
-
+	
+	public void setImage(String image_dir)
+	{
+		//setup image
+		Icon icon = new ImageIcon(openImage(image_dir));
+		image_label = new JLabel(icon);
+		image_label.setBounds(0, 0, 512, 300);
+		
+	}
 }

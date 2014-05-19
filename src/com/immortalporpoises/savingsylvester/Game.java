@@ -53,14 +53,9 @@ public class Game{
 		environments.add(dun);
 		
 		//add garden areas to the garden array to enable n/s/e/w navigation
-		for(int i = 0; i < 3; i++)
-		{
-			for(int j = 0; j < 3; j++)
-			{
-				garden[i][j] = g;
-				dungeon[i][j] = dun;
-			}
-		}
+		garden[0][0] = g;
+		dungeon[0][0] = dun;
+		
 		//[col][row]
 		garden[1][0] = z;
 		garden[0][1] = h; //hey Nathan, this is where we add the environments to the garden
@@ -237,6 +232,7 @@ public class Game{
 			}
 			else
 			{
+				display.setImage("Pictures/palace_image.jpg");
 				display.setOutput("You enter the " + part2 + ".");
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
