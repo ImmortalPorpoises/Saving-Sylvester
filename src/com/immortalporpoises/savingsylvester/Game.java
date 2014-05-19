@@ -58,6 +58,7 @@ public class Game{
 		environments.add(nwd);
 		
 		//add garden areas to the garden array to enable n/s/e/w navigation
+<<<<<<< HEAD
 		for(int i = 0; i < 3; i++)
 		{
 			for(int j = 0; j < 3; j++)
@@ -78,6 +79,20 @@ public class Game{
 		// dungeon area [col][row]
 		dungeon[0][1] = wd;
 		dungeon[0][2] = swd;
+=======
+		garden[0][0] = g;
+		dungeon[0][0] = dun;
+		
+		//[col][row]
+		garden[1][0] = z;
+		garden[0][1] = h; //hey Nathan, this is where we add the environments to the garden
+		garden[0][2] = q;
+		garden[1][1] = c;
+		garden[2][0] = w;
+		garden[2][1] = t;
+		garden[2][2] = d;
+		garden[1][2] = s;
+>>>>>>> 8a1adb1b184a43e70e1041a3fb28fb0e1c63e980
 		
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
@@ -257,8 +272,12 @@ public class Game{
 			}
 			else
 			{
+<<<<<<< HEAD
 				x_index = 0;
 				y_index = 0;
+=======
+				display.setImage("Pictures/palace_image.jpg");
+>>>>>>> 8a1adb1b184a43e70e1041a3fb28fb0e1c63e980
 				display.setOutput("You enter the " + part2 + ".");
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));

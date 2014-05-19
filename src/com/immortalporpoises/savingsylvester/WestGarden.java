@@ -13,6 +13,8 @@ public class WestGarden extends Environment {
 		
 		//setup things
 		RottenPotatoes b = new RottenPotatoes();
+		Key k = new Key();
 		sthings_in_environ.add(b);
+		sthings_in_environ.add(k);
 	}
 }
