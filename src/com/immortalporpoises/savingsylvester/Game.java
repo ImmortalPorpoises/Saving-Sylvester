@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game{
-	//variables that store the current environment, the game display window, and the 
+	
+	//variables that store the current environment, the game display window, and lots else
 	private JFrame frame;
 	private JPanel panel;
 	private Environment currentEnvironment = new YourRoom();
@@ -50,6 +51,7 @@ public class Game{
 		Environment seg = new Southeastgarden();
 		Environment sg = new Southgarden();
 		
+		//initialize dungeon environments
 		Environment nw_dungeon = new Northwestdungeon();
 		Environment w_dungeon = new Westdungeon();
 		Environment sw_dungeon = new Southwestdungeon();
@@ -61,9 +63,10 @@ public class Game{
 		Environment atrium = new Atrium();
 		Environment jailer_room = new JailerRoom();
 		
-		//area that acts as "filler" for areas you can't go in the arrays
+		//area that acts as "filler" for areas the player can't go in the array
 		Environment empty = new Empty();
 		
+		//environments that can be travelled to via passages are added here
 		environments.add(room);
 		environments.add(nwg);
 		environments.add(nw_dungeon);
@@ -99,6 +102,7 @@ public class Game{
 		dungeon[2][0] = atrium;
 		dungeon[3][1] = jailer_room;
 		
+		//the initial text when you start the game
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
 				+ "i.e. \"look room,\" \"examine bear,\" \"take bear,\" \"enter door,\" etc. \nTo view your inventory, simply "
 				+ "type \"view inventory.\" To get help, type \"help me.\" Case and punctuation do not matter."
@@ -121,6 +125,7 @@ public class Game{
 	
 	public void parseText(String answer)
 	{
+		//convert the input to lowercase and remove extra spaces
 		answer = answer.toLowerCase();
 		answer = answer.trim();
 		if(answer.endsWith("."))
@@ -128,6 +133,7 @@ public class Game{
 			answer = answer.replace(".", "");
 		}
 		
+		//split the string into two parts at the space
 		String[] parts = answer.split(" ");
 		String part1 = "";
 		String part2 = "";
@@ -136,7 +142,6 @@ public class Game{
 		     part1 = parts[0];
 		     part2 = parts[1];
 		}
-		System.out.println(answer);
 		
 		if(part1.equals("help") && part2.equals("me"))
 		{
@@ -149,6 +154,10 @@ public class Game{
 		{
 			System.exit(0);
 		}
+		
+		//*********************************
+		// NAVIGATION (n/s/e/w) handled here
+		//*********************************
 		
 		if(part1.equals("go"))
 		{		
@@ -242,6 +251,10 @@ public class Game{
 			}
 		}
 		
+		//******************************
+		// OBSERVING handled here
+		//******************************
+		
 		if(part1.equals("look") || part1.equals("examine"))
 		{
 			if(part2.equals(currentEnvironment.getEnvironName()))
@@ -254,6 +267,10 @@ public class Game{
 				display.setOutput(currentEnvironment.getThingDescription(part2));
 			}
 		}
+		
+		//*******************************
+		//INVENTORY ADDING handled here
+		//*******************************
 		
 		if(part1.equals("get") || part1.equals("take"))
 		{
@@ -274,6 +291,11 @@ public class Game{
 			}
 		}
 
+		//********************************
+		// MOVEMENT VIA PASSAGES handled here
+		// (moves the player between arrays)
+		//********************************
+		
 		if(part1.equals("enter"))
 		{
 			Environment[][] move_array = new Environment[3][3];
@@ -301,6 +323,10 @@ public class Game{
 				}
 			}
 		}				
+		
+		//************************
+		// VIEW INVENTORY handled here
+		//************************
 		
 		if(part1.equals("view") && part2.equals("inventory"))//print out the inventory has to be a part to
 		{
@@ -334,6 +360,11 @@ public class Game{
 			}
 		}
 		
+		//***********************
+		// PUNCHING THE BEAR handled here
+		// (because this feature is obviously so important)
+		//***********************
+		
 		if(part1.equals("punch") || part1.equals("kick") || part1.contains("hit") && part2.equals("bear"))
 		{
 			display.setOutput("the bear snaps to life and begins to beat the ever-loving mess out of you.");
@@ -342,6 +373,7 @@ public class Game{
 		display.setUpdateValue(false);
 	}
 	
+	//when the update value is true, this method causes the game to grab text input and process it
 	public void updateGame()
 	{
 		if(display.getUpdateValue())
@@ -350,7 +382,8 @@ public class Game{
 			this.parseText(answer);
 		}
 	}
-	
+
+	//gets the array index value of the environment in the environment ArrayList
 	public int getEnvironIndex(String environ_name)
 	{
 		for(int i = 0; i<environments.size(); i++)
