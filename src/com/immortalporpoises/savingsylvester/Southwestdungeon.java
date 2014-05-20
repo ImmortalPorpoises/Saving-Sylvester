@@ -9,7 +9,7 @@ public final class Southwestdungeon extends Environment
 		environ_name = "dungeon";
 
 		//entry description
-		entry_description = "TBA";
+		entry_description = "Southwest Dungeon";
 		
 		Passage cell = new Passage("cell", "jailcell");
 		

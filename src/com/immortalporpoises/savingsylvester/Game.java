@@ -22,8 +22,7 @@ public class Game{
 	private List<Environment> environments = new ArrayList<Environment>();
 	private Environment[][] garden = new Environment[3][3];//the garden area array
 	private Environment[][] your_room = new Environment[1][1]; //the starting room array
-	private Environment[][] dungeon = new Environment[3][3];//the dungeon area array
-	private Environment[][] jailcell = new Environment[1][1]; //the jail cell array
+	private Environment[][] dungeon = new Environment[5][5];//the dungeon area array
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
 	private int x_index = 0;
 	private int y_index = 0;
@@ -36,11 +35,12 @@ public class Game{
 		frame.setSize(1024, 600);
 		frame.setVisible(true);
 		frame.add(display);
-		//initialize environments
+		
+		//initialize room
 		Environment room = new YourRoom();
+		
+		//initialize garden environments
 		Environment nwg = new Northwestgarden();
-		Environment nwd = new Northwestdungeon();
-		Environment jc = new jailcell();
 		Environment ng = new Northgarden();
 		Environment wg = new WestGarden();
 		Environment swg = new Southwestgarden();
@@ -49,23 +49,17 @@ public class Game{
 		Environment eg = new Eastgarden();
 		Environment seg = new Southeastgarden();
 		Environment sg = new Southgarden();
+		
+		Environment nwd = new Northwestdungeon();
 		Environment wd = new Westdungeon();
 		Environment swd = new Southwestdungeon();
+		Environment jc = new jailcell();
+		Environment empty = new Empty();
 		
-		environments.add(jc);
 		environments.add(room);
 		environments.add(nwg);
 		environments.add(nwd);
 		
-		//add garden areas to the garden array to enable n/s/e/w navigation
-		for(int i = 0; i < 3; i++)
-		{
-			for(int j = 0; j < 3; j++)
-			{
-				garden[i][j] = nwg;
-				dungeon[i][j] = nwd;
-			}
-		}
 		// garden area [col][row]
 		garden[1][0] = ng;
 		garden[0][1] = wg; 
@@ -75,11 +69,27 @@ public class Game{
 		garden[2][1] = eg;
 		garden[2][2] = seg;
 		garden[1][2] = sg;
-		// dungeon area [col][row]
-		dungeon[0][1] = wd;
-		dungeon[0][2] = swd;
-
 		
+		//fill dungeon with empty environments first
+		for(int i = 0; i < 5; i++)
+		{
+			for(int j = 0; j < 5; j++)
+			{
+				dungeon[i][j] = empty;
+			}
+		}
+		
+		// dungeon area [col][row]
+		dungeon[0][1] = nwd;
+		dungeon[0][2] = wd;
+		dungeon[0][3] = swd;
+		dungeon[0][4] = jc;
+		dungeon[1][3] = swd;
+		dungeon[2][3] = swd;
+		dungeon[2][2] = swd;
+		dungeon[2][1] = swd;
+		dungeon[3][1] = wd;
+		dungeon[3][0] = wd;
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
 				+ "i.e. \"look room,\" \"examine bear,\" \"take bear,\" \"enter door,\" etc. \nTo view your inventory, simply "
@@ -131,9 +141,10 @@ public class Game{
 		{
 			System.exit(0);
 		}
+		
 		if(part1.equals("go"))
-		{
-			Environment[][] move_array = new Environment[3][3];
+		{		
+			Environment[][] move_array = new Environment[1][1];
 			
 			if(currentEnvironment.getEnvironName().equals("garden"))
 			{
@@ -147,17 +158,20 @@ public class Game{
 			{
 				move_array = dungeon;
 			}
-			if(currentEnvironment.getEnvironName().equals("jailcell"))
-			{
-				move_array = jailcell;
-			}
+			
 			if(part2.equals("north"))
 			{
 				if(y_index > 0)
 				{
 					y_index = y_index - 1;
-					currentEnvironment = move_array[x_index][y_index];
-					display.setOutput(currentEnvironment.getEntryDescription());
+					if(!move_array[x_index][y_index].getEnvironName().equals("empty"))
+					{
+						currentEnvironment = move_array[x_index][y_index];
+						display.setOutput(currentEnvironment.getEntryDescription());
+					} else
+					{
+						display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
+					}
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -165,11 +179,18 @@ public class Game{
 			}
 			if(part2.equals("south"))
 			{
-				if(y_index < 3)
+				if(y_index < move_array[x_index].length-1)
 				{
 					y_index = y_index + 1;
-					currentEnvironment = move_array[x_index][y_index];
-					display.setOutput(currentEnvironment.getEntryDescription());
+					if(!move_array[x_index][y_index].getEnvironName().equals("empty"))
+					{
+						currentEnvironment = move_array[x_index][y_index];
+						display.setOutput(currentEnvironment.getEntryDescription());
+					} else
+					{
+						display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
+					}
+						
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -180,8 +201,14 @@ public class Game{
 				if(x_index > 0)
 				{
 					x_index = x_index - 1;
-					currentEnvironment = move_array[x_index][y_index];
-					display.setOutput(currentEnvironment.getEntryDescription());
+					if(!move_array[x_index][y_index].getEnvironName().equals("empty"))
+					{
+						currentEnvironment = move_array[x_index][y_index];
+						display.setOutput(currentEnvironment.getEntryDescription());
+					} else
+					{
+						display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
+					}
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -190,11 +217,17 @@ public class Game{
 			
 			if(part2.equals("east"))
 			{
-				if(x_index < 3)
+				if(x_index < move_array.length-1)
 				{
 					x_index = x_index + 1;
-					currentEnvironment = move_array[x_index][y_index];
-					display.setOutput(currentEnvironment.getEntryDescription());
+					if(!move_array[x_index][y_index].getEnvironName().equals("empty"))
+					{
+						currentEnvironment = move_array[x_index][y_index];
+						display.setOutput(currentEnvironment.getEntryDescription());
+					} else
+					{
+						display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
+					}
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -242,20 +275,6 @@ public class Game{
 			{
 				display.setOutput("You cannot enter the " + part2 + ".");
 			}
-			else if(currentEnvironment.getEnvironName().equals("dungeon"))
-			{
-				move_array = garden;
-				display.setOutput("You enter the " + part2 + ".");
-				currentEnvironment = move_array[2][2];
-				display.setOutput(currentEnvironment.getEntryDescription());
-			}
-			else if(currentEnvironment.getEnvironName().equals("jailcell"))
-			{
-				move_array = dungeon;
-				display.setOutput("You exit the " + part2 + ".");
-				currentEnvironment = move_array[0][2];
-				display.setOutput(currentEnvironment.getEntryDescription());
-			}
 			else
 			{
 				x_index = 0;
@@ -266,8 +285,15 @@ public class Game{
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
 				display.setOutput(currentEnvironment.getEntryDescription());
+				
+				if(currentEnvironment.getEnvironName().equals("dungeon"))
+				{
+					x_index = 0;
+					y_index = 1;
+				}
 			}
 		}				
+		
 		if(part1.equals("view") && part2.equals("inventory"))//print out the inventory has to be a part to
 		{
 			if(Inventory.isEmpty())

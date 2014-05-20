@@ -6,8 +6,8 @@ public class Southwestgarden extends Environment
 	public Southwestgarden() 
 	{
 		{
-			environ_name = "garden";//name of envioment
-			entry_description = "When you enter the south west coner of the garden you notice a rather large" + " knight polishing a" + " sword.";// decription of the environmanet
+			environ_name = "garden";//name of environment
+			entry_description = "When you enter the south west corner of the garden you notice a rather large" + " knight polishing a" + " sword.";// decription of the environmanet
 			main_description = "affa";//look command
 			
 			//setup

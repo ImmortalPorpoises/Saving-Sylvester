@@ -9,6 +9,6 @@ public final class Westdungeon extends Environment
 		environ_name = "dungeon";
 
 		//entry description
-		entry_description = "TBA";
+		entry_description = "West Dungeon area";
 	}
 }
