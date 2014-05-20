@@ -50,15 +50,23 @@ public class Game{
 		Environment seg = new Southeastgarden();
 		Environment sg = new Southgarden();
 		
-		Environment nwd = new Northwestdungeon();
-		Environment wd = new Westdungeon();
-		Environment swd = new Southwestdungeon();
-		Environment jc = new jailcell();
+		Environment nw_dungeon = new Northwestdungeon();
+		Environment w_dungeon = new Westdungeon();
+		Environment sw_dungeon = new Southwestdungeon();
+		Environment cell_dungeon = new jailcell();
+		Environment s_dungeon = new SouthDungeon();
+		Environment se_dungeon = new SoutheastDungeon();
+		Environment e_dungeon = new EastDungeon();
+		Environment ne_dungeon = new NortheastDungeon();
+		Environment atrium = new Atrium();
+		Environment jailer_room = new JailerRoom();
+		
+		//area that acts as "filler" for areas you can't go in the arrays
 		Environment empty = new Empty();
 		
 		environments.add(room);
 		environments.add(nwg);
-		environments.add(nwd);
+		environments.add(nw_dungeon);
 		
 		// garden area [col][row]
 		garden[1][0] = ng;
@@ -80,22 +88,22 @@ public class Game{
 		}
 		
 		// dungeon area [col][row]
-		dungeon[0][1] = nwd;
-		dungeon[0][2] = wd;
-		dungeon[0][3] = swd;
-		dungeon[0][4] = jc;
-		dungeon[1][3] = swd;
-		dungeon[2][3] = swd;
-		dungeon[2][2] = swd;
-		dungeon[2][1] = swd;
-		dungeon[3][1] = wd;
-		dungeon[3][0] = wd;
+		dungeon[0][1] = nw_dungeon;
+		dungeon[0][2] = w_dungeon;
+		dungeon[0][3] = sw_dungeon;
+		dungeon[0][4] = cell_dungeon;
+		dungeon[1][3] = s_dungeon;
+		dungeon[2][3] = se_dungeon;
+		dungeon[2][2] = e_dungeon;
+		dungeon[2][1] = ne_dungeon;
+		dungeon[2][0] = atrium;
+		dungeon[3][1] = jailer_room;
 		
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
 				+ "i.e. \"look room,\" \"examine bear,\" \"take bear,\" \"enter door,\" etc. \nTo view your inventory, simply "
 				+ "type \"view inventory.\" To get help, type \"help me.\" Case and punctuation do not matter."
-				+ "\n\n\"\"and so Sylvester breathed his last. \n The End.\" \n\n    We open at the close."
-				+ "\n    You snap the book shut\"it\"s the latest work by your favorite fantasy author, P.F. Tollers\"and"
+				+ "\n\n\"and so Sylvester breathed his last. \n The End.\" \n\n    We open at the close."
+				+ "\n    You snap the book shut - the latest work by your favorite fantasy author, P.F. Tollers and"
 				+ " wipe a tear away. \"Why did Sylvester have to die?\" you wonder out loud. \"He was the best "
 				+ "character in the series.\" This thought overcomes you, and you break down in pitiful sobs."
 				+ "\n    Time passes, and a few hours later, you are in your room, sobbing violently in the fetal position"
@@ -163,11 +171,11 @@ public class Game{
 			{
 				if(y_index > 0)
 				{
-					y_index = y_index - 1;
-					if(!move_array[x_index][y_index].getEnvironName().equals("empty"))
+					if(!move_array[x_index][y_index-1].getEnvironName().equals("empty"))
 					{
-						currentEnvironment = move_array[x_index][y_index];
+						currentEnvironment = move_array[x_index][y_index-1];
 						display.setOutput(currentEnvironment.getEntryDescription());
+						y_index -= 1;
 					} else
 					{
 						display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -181,16 +189,15 @@ public class Game{
 			{
 				if(y_index < move_array[x_index].length-1)
 				{
-					y_index = y_index + 1;
-					if(!move_array[x_index][y_index].getEnvironName().equals("empty"))
+					if(!move_array[x_index][y_index+1].getEnvironName().equals("empty"))
 					{
-						currentEnvironment = move_array[x_index][y_index];
+						currentEnvironment = move_array[x_index][y_index+1];
 						display.setOutput(currentEnvironment.getEntryDescription());
+						y_index += 1;
 					} else
 					{
 						display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
-					}
-						
+					}						
 				} else
 				{
 					display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -200,11 +207,11 @@ public class Game{
 			{
 				if(x_index > 0)
 				{
-					x_index = x_index - 1;
-					if(!move_array[x_index][y_index].getEnvironName().equals("empty"))
+					if(!move_array[x_index-1][y_index].getEnvironName().equals("empty"))
 					{
-						currentEnvironment = move_array[x_index][y_index];
+						currentEnvironment = move_array[x_index-1][y_index];
 						display.setOutput(currentEnvironment.getEntryDescription());
+						x_index -= 1;
 					} else
 					{
 						display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -219,11 +226,11 @@ public class Game{
 			{
 				if(x_index < move_array.length-1)
 				{
-					x_index = x_index + 1;
-					if(!move_array[x_index][y_index].getEnvironName().equals("empty"))
+					if(!move_array[x_index+1][y_index].getEnvironName().equals("empty"))
 					{
-						currentEnvironment = move_array[x_index][y_index];
+						currentEnvironment = move_array[x_index+1][y_index];
 						display.setOutput(currentEnvironment.getEntryDescription());
+						x_index += 1;
 					} else
 					{
 						display.setOutput("You attempt to go that way but discover that a wall is blocking your way.");
@@ -290,6 +297,7 @@ public class Game{
 				{
 					x_index = 0;
 					y_index = 1;
+					//move_array = dungeon;
 				}
 			}
 		}				
