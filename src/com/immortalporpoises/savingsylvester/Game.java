@@ -370,6 +370,18 @@ public class Game{
 			display.setOutput("the bear snaps to life and begins to beat the ever-loving mess out of you.");
 		}
 		
+		//handle opening door in atrium with key here
+		if(part1.equals("open") && part2.equals("door"))
+		{
+			if(currentEnvironment.getEntryDescription().equals("atrium of the dungeon") && Inventory.get(1).getName().equals("key")))
+			{
+				display.setOutput("You open the door and enter the main area of the castle.");
+			} else
+			{
+				display.setOutput("Sorry, but you're going to need a key to open this door.");
+			}
+		}
+		
 		display.setUpdateValue(false);
 	}
 	
