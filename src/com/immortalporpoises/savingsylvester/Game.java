@@ -373,7 +373,7 @@ public class Game{
 		//handle opening door in atrium with key here
 		if(part1.equals("open") && part2.equals("door"))
 		{
-			if(currentEnvironment.getEntryDescription().equals("atrium of the dungeon") && Inventory.get(1).getName().equals("key")))
+			if(currentEnvironment.getEntryDescription().equals("atrium of the dungeon") && Inventory.get(1).getName().equals("key"))
 			{
 				display.setOutput("You open the door and enter the main area of the castle.");
 			} else
