@@ -4,10 +4,14 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import java.io.File;
 import java.lang.Class;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +31,8 @@ public class Game{
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
 	private int x_index = 0;
 	private int y_index = 0;
+	
+		
 
 	public Game()
 	{
@@ -99,7 +105,7 @@ public class Game{
 		dungeon[2][3] = se_dungeon;
 		dungeon[2][2] = e_dungeon;
 		dungeon[2][1] = ne_dungeon;
-		dungeon[2][0] = atrium;
+		dungeon[3][0] = atrium;
 		dungeon[3][1] = jailer_room;
 		
 		//the initial text when you start the game
@@ -320,6 +326,8 @@ public class Game{
 					x_index = 0;
 					y_index = 1;
 					//move_array = dungeon;
+					Thread music = new Audio();
+					music.start();
 				}
 			}
 		}				
