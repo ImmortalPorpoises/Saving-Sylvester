@@ -3,21 +3,23 @@ package com.immortalporpoises.savingsylvester;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class Environment {
+//this is the superclass from which all of the areas in the game are created
 
-	protected List<Item> items_in_environ = new ArrayList<Item>();
+public abstract class Environment
+{
+	//***********************************
+	//initialize all of the fields necessary for each environment
+	//***********************************
+	
+	//there is the environment's name, an array of things, an array of passages, an entry description, and 
+	//a main description of the room the main description is what writes to the screen when the player types "look <area>"
+	protected String environ_name;
 	protected List<Thing> sthings_in_environ = new ArrayList<Thing>();
 	protected List<Passage> entrances_and_exits = new ArrayList<Passage>();
 	protected String entry_description;
 	protected String main_description = "The area suddenly becomes vague and abstract. You suspect that this area might"
 			+ " not have defined a specific description for itself and that it's using the abstract superclass's default"
 			+ " description instead.";
-	protected String environ_name;
-	
-	public Environment()
-	{
-		// TODO Auto-generated constructor stub
-	}
 	
 	public String getEnvironName()
 	{
@@ -35,6 +37,7 @@ public abstract class Environment {
 	
 	public String getThingDescription(String thing_name)
 	{
+		//searches through the array of things to see if there is a thing with the name the user inputted
 		for(int i = 0; i<sthings_in_environ.size(); i++)
 		{			
 			if(thing_name.equals(sthings_in_environ.get(i).getName()))
@@ -58,6 +61,7 @@ public abstract class Environment {
 		return -1;
 	}
 	
+	//gets the name of a passage (if it exists)
 	public String getPassageName(String passage_name)
 	{
 		for(int i = 0; i<entrances_and_exits.size(); i++)
@@ -70,6 +74,7 @@ public abstract class Environment {
 		return null;
 	}
 	
+	//gets a string value of the destination of the passage
 	public String getPassagDestination(String passage_name)
 	{
 		for(int i = 0; i<entrances_and_exits.size(); i++)

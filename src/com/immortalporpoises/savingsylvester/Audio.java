@@ -6,11 +6,13 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class Audio extends Thread {
-
-    public void run() {
+public class Audio extends Thread
+{
+    public void run()
+    {
     	try
     	{
+<<<<<<< HEAD
     	AudioInputStream audioIn1 = AudioSystem.getAudioInputStream(new File("Audio/C.wav"));
     	Clip clip1 = AudioSystem.getClip();
     	clip1.open(audioIn1);
@@ -20,6 +22,12 @@ public class Audio extends Thread {
     	clip2.open(audioIn2);
     	clip2.start();
     	
+=======
+	    	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Audio/CSDungeonsongysong.wav"));
+	    	Clip clip = AudioSystem.getClip();
+	    	clip.open(audioIn);
+	    	clip.start();
+>>>>>>> a60d0de8ae414d17900e49ed9a16a434be9858c0
     	}
     	catch(Exception ex)
     	{
@@ -28,8 +36,8 @@ public class Audio extends Thread {
     	}
     	}
 
-    public static void main(String args[]) {
-
+    public static void main(String args[])
+    {
     		 (new Audio()).start();
     }
 }
