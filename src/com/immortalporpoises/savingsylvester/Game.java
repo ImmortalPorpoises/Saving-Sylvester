@@ -223,6 +223,14 @@ public class Game{
 			{
 				move_array = dungeon;
 			}
+			if(currentEnvironment.getEnvironName().equals("palace"))
+			{
+				move_array = palace;
+			}
+			if(currentEnvironment.getEnvironName().equals("tower"))
+			{
+				move_array = tower;
+			}
 			
 			if(part2.equals("north"))
 			{
