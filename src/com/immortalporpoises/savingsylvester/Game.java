@@ -33,6 +33,7 @@ public class Game{
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
 	private int x_index = 0;
 	private int y_index = 0;
+	private int opengate = 0;
 	
 		
 
@@ -362,32 +363,49 @@ public class Game{
 			}
 			else
 			{
+				if(currentEnvironment.getEnvironName().equals("garden") && garden[x_index][y_index] == garden[2][2])
+				{
+					if(opengate == 1)
+					{
+						display.setOutput("You enter the " + part2 + ".");
+						String passage_leads = currentEnvironment.getPassagDestination(part2);
+						currentEnvironment = environments.get(getEnvironIndex(passage_leads));
+						display.setOutput(currentEnvironment.getEntryDescription());
+						if(currentEnvironment.getEnvironName().equals("dungeon"))
+						{
+							display.setImage("Pictures/dungeon_image.jpg");
+							x_index = 0;
+							y_index = 1;
+						}
+					}
+					else
+					{
+						display.setOutput("Sorry, but you're going to need a key to open this gate.");
+					}
+				}
+				
 				x_index = 0;
 				y_index = 0;
-
-				display.setOutput("You enter the " + part2 + ".");
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
-				display.setOutput(currentEnvironment.getEntryDescription());
-				
 				if(currentEnvironment.getEnvironName().equals("garden"))
 				{
+					display.setOutput("You enter the " + part2 + ".");
+					display.setOutput(currentEnvironment.getEntryDescription());
 					display.setImage("Pictures/garden_image.jpg");
-				}
-				if(currentEnvironment.getEnvironName().equals("dungeon"))
-				{
-					display.setImage("Pictures/dungeon_image.jpg");
-					x_index = 0;
-					y_index = 1;
 				}
 				if(currentEnvironment.getEnvironName().equals("palace"))
 				{
+					display.setOutput("You enter the " + part2 + ".");
+					display.setOutput(currentEnvironment.getEntryDescription());
 					display.setImage("Pictures/palace_image.jpg");
-					x_index = 0;
-					y_index = 0;
+					x_index = 3;
+					y_index = 2;
 				}
 				if(currentEnvironment.getEnvironName().equals("tower"))
 				{
+					display.setOutput("You enter the " + part2 + ".");
+					display.setOutput(currentEnvironment.getEntryDescription());
 					display.setImage("Pictures/tower_image.jpg");
 					x_index = 0;
 					y_index = 2;
@@ -474,14 +492,26 @@ public class Game{
 		}
 		
 		//handle opening door in atrium with key here
-		if(part1.equals("open") && part2.equals("door"))
+		if(part1.equals("unlock") && part2.equals("gate"))
 		{
-			if(currentEnvironment.getEntryDescription().equals("atrium of the dungeon") && Inventory.get(1).getName().equals("key"))
+			Environment[][] move_array = new Environment[3][3];
+			if(currentEnvironment.getEnvironName().equals("garden") && Inventory.get(0).getName().equals("key"))
 			{
-				display.setOutput("You open the door and enter the main area of the castle.");
-			} else
+				if(currentEnvironment.getEnvironName().equals("garden"))
+				{
+					move_array = dungeon;
+					x_index=2;
+					y_index=2;
+				}
+				if(move_array[x_index][y_index] == garden[2][2])
+				{
+				display.setOutput("You open the gate to the dungeon of the castle.");
+				opengate = 1;
+				}
+			} 
+			else
 			{
-				display.setOutput("Sorry, but you're going to need a key to open this door.");
+				display.setOutput("Sorry, but you're going to need a key to open this gate.");
 			}
 		}
 		

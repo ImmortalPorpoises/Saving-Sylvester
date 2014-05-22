@@ -13,5 +13,7 @@ public class Atrium extends Environment
 		//passage to palace
 		Passage stairs = new Passage("stairs", "palace");		
 		entrances_and_exits.add(stairs);
+		Passage door = new Passage("door", "palace");		
+		entrances_and_exits.add(door);
 	}
 }
