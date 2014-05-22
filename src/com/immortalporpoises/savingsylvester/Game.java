@@ -166,7 +166,6 @@ public class Game{
 				+ "intently to your computer and promptly begin whining to the world through various social "
 				+ "media. Strangely enough, you are suddenly struck by the feeling that someone is watching you. "
 				+ "You rise from your desk to look around.");
-		
 		//continue to update the game until the user exits the window
 		for(;;)
 		{
@@ -196,10 +195,8 @@ public class Game{
 		
 		if(part1.equals("help") && part2.equals("me"))
 		{
-			display.setOutput("You want assistance? Do this without resistance: don't panic, take a deep breath, and"
-					+ " remember this isn't a matter of life and death."
-					+ "\n    If you're unsatisfied with this level of aid, please contact my programmer without"
-					+ " delay. Oh, and have a nice day!");
+			display.setOutput("You want assistance? Here are some things you could try entering: 'go'(in any cardinal direction),"
+					+ " 'enter, or climb', 'get or take', and 'examine or look'(any interactable object/character).");
 		}
 		if(part1.equals("kill") && part2.equals("myself"))
 		{
@@ -225,14 +222,6 @@ public class Game{
 			if(currentEnvironment.getEnvironName().equals("dungeon"))
 			{
 				move_array = dungeon;
-			}
-			if(currentEnvironment.getEnvironName().equals("palace"))
-			{
-				move_array = palace;
-			}
-			if(currentEnvironment.getEnvironName().equals("tower"))
-			{
-				move_array = tower;
 			}
 			
 			if(part2.equals("north"))
@@ -471,7 +460,7 @@ public class Game{
 		//handle opening door in atrium with key here
 		if(part1.equals("open") && part2.equals("door"))
 		{
-			if(currentEnvironment.getEntryDescription().equals("atrium of the dungeon") && Inventory.get(0).getName().equals("key"))
+			if(currentEnvironment.getEntryDescription().equals("atrium of the dungeon") && Inventory.get(1).getName().equals("key"))
 			{
 				display.setOutput("You open the door and enter the main area of the castle.");
 			} else
