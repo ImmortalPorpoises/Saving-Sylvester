@@ -12,29 +12,11 @@ public class Audio extends Thread
     {
     	try
     	{
-<<<<<<< HEAD
 
-    	AudioInputStream audioIn1 = AudioSystem.getAudioInputStream(new File("Audio/C.wav"));
-=======
-    	AudioInputStream audioIn1 = AudioSystem.getAudioInputStream(new File("Audio/CSGameIntro.wav"));
->>>>>>> 3c85285c23b8e022774c454f697831634e2e556f
+    	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Audio/CSGameIntro.wav"));
     	Clip clip1 = AudioSystem.getClip();
-    	clip1.open(audioIn1);
+    	clip1.open(audioIn);
     	clip1.start();
-    	
-<<<<<<< HEAD
-
-	    	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Audio/CSDungeonsongysong.wav"));
-	    	Clip clip = AudioSystem.getClip();
-	    	clip.open(audioIn);
-	    	clip.start();
-
-=======
-    	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Audio/CSDungeonsongysong.wav"));
-    	Clip clip = AudioSystem.getClip();
-    	clip.open(audioIn);
-    	clip.start();
->>>>>>> 3c85285c23b8e022774c454f697831634e2e556f
     	}
     	catch(Exception ex)
     	{

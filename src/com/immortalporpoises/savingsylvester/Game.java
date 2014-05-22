@@ -28,6 +28,7 @@ public class Game{
 	private Environment[][] garden = new Environment[3][3];//the garden area array
 	private Environment[][] your_room = new Environment[1][1]; //the starting room array
 	private Environment[][] dungeon = new Environment[5][5];//the dungeon area array
+	private Environment[][] palace = new Environment[4][3];//the palace area array
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
 	private int x_index = 0;
 	private int y_index = 0;
@@ -69,6 +70,17 @@ public class Game{
 		Environment atrium = new Atrium();
 		Environment jailer_room = new JailerRoom();
 		
+		//initialize palace environments
+		Environment lc_palace = new Leftcenterpalace();
+		Environment ln_palace = new Leftnorthpalace();
+		Environment ls_palace = new Leftsouthpalace();
+		Environment ne_palace = new Northeastpalace();
+		Environment nw_palace = new Northwestpalace();
+		Environment rn_palace = new Rightnorthpalace();
+		Environment rs_palace = new Rightsouthpalace();
+		Environment se_palace = new Southeastpalace();
+		Environment sw_palace = new Southwestpalace();
+		
 		//area that acts as "filler" for areas the player can't go in the array
 		Environment empty = new Empty();
 		
@@ -76,6 +88,7 @@ public class Game{
 		environments.add(room);
 		environments.add(nwg);
 		environments.add(nw_dungeon);
+		environments.add(sw_palace);
 		
 		// garden area [col][row]
 		garden[1][0] = ng;
@@ -108,6 +121,26 @@ public class Game{
 		dungeon[3][0] = atrium;
 		dungeon[3][1] = jailer_room;
 		
+		//fill palace with empty environments first
+				for(int i = 0; i < 4; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						palace[i][j] = empty;
+					}
+				}
+				
+				// garden area [col][row]
+				palace[0][0] = nw_palace;
+				palace[1][0] = ln_palace; 
+				palace[2][0] = rn_palace;
+				palace[3][0] = ne_palace;
+				palace[1][1] = lc_palace;
+				palace[0][2] = sw_palace;
+				palace[1][2] = ls_palace;
+				palace[2][2] = rs_palace;
+				palace[3][2] = se_palace;
+				
 		//the initial text when you start the game
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
 				+ "i.e. \"look room,\" \"examine bear,\" \"take bear,\" \"enter door,\" etc. \nTo view your inventory, simply "
@@ -325,12 +358,38 @@ public class Game{
 				{
 					x_index = 0;
 					y_index = 1;
-					//move_array = dungeon;
-					Thread music = new Audio();
-					music.start();
 				}
 			}
-		}				
+		}
+		
+		if(part1.equals("climb"))
+		{
+			if(currentEnvironment.getPassageName(part2)==null)
+			{
+				display.setOutput("You cannot climb the " + part2 + ".");
+			}
+			else
+			{
+				x_index = 0;
+				y_index = 0;
+				
+				display.setOutput("You climb the " + part2 + ".");
+				String passage_leads = currentEnvironment.getPassagDestination(part2);
+				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
+				display.setOutput(currentEnvironment.getEntryDescription());
+				
+				if(currentEnvironment.getEnvironName().equals("palace"))
+				{
+					x_index = 3;
+					y_index = 2;
+				}
+				if(currentEnvironment.getEnvironName().equals("dungeon"))
+				{
+					x_index = 3;
+					y_index = 0;
+				}
+			}
+		}
 		
 		//************************
 		// VIEW INVENTORY handled here

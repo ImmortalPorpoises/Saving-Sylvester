@@ -6,7 +6,7 @@ public class JailerRoom extends Environment
 	{
 		environ_name = "dungeon";
 		
-		entry_description = "You enter the jailer's room to sound of loud snoring";
+		entry_description = "You enter the jailer's room to sound of loud snoring. You see a pathway leading to the atrium.";
 		
 		main_description = "The jailer is fast asleep in a corner of the room, swinging gently in a hammock"
 				+ " and snoring loudly as if defiant of the impending hangover. A set of keys dangles on the wall, "

@@ -6,7 +6,7 @@ public class NortheastDungeon extends Environment
 	{
 		environ_name = "dungeon";
 		
-		entry_description = "Northeast dungeon -- leads to either the atrium or the jailer's room";
+		entry_description = "Northeast dungeon -- leads to the jailer's room";
 		
 		main_description = "TBA";
 	}

@@ -9,5 +9,9 @@ public class Atrium extends Environment
 		entry_description = "atrium of the dungeon";
 		
 		main_description = "TBA";
+		
+		//passage to palace
+		Passage stairs = new Passage("stairs", "palace");		
+		entrances_and_exits.add(stairs);
 	}
 }
