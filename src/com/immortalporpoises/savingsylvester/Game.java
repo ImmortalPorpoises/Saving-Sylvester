@@ -149,9 +149,9 @@ public class Game{
 				palace[3][2] = se_palace;
 				
 				// tower area [col][row]
-				palace[0][0] = n_tower;
-				palace[0][1] = c_tower; 
-				palace[0][2] = s_tower;
+				tower[0][0] = n_tower;
+				tower[0][1] = c_tower; 
+				tower[0][2] = s_tower;
 				
 		//the initial text when you start the game
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
@@ -368,24 +368,30 @@ public class Game{
 				x_index = 0;
 				y_index = 0;
 
-				display.setImage("Pictures/palace_image.jpg");
 				display.setOutput("You enter the " + part2 + ".");
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
 				display.setOutput(currentEnvironment.getEntryDescription());
 				
+				if(currentEnvironment.getEnvironName().equals("garden"))
+				{
+					display.setImage("Pictures/garden_image.jpg");
+				}
 				if(currentEnvironment.getEnvironName().equals("dungeon"))
 				{
+					display.setImage("Pictures/dungeon_image.jpg");
 					x_index = 0;
 					y_index = 1;
 				}
 				if(currentEnvironment.getEnvironName().equals("palace"))
 				{
+					display.setImage("Pictures/palace_image.jpg");
 					x_index = 0;
 					y_index = 0;
 				}
 				if(currentEnvironment.getEnvironName().equals("tower"))
 				{
+					display.setImage("Pictures/tower_image.jpg");
 					x_index = 0;
 					y_index = 2;
 				}
@@ -410,11 +416,13 @@ public class Game{
 				
 				if(currentEnvironment.getEnvironName().equals("palace"))
 				{
+					display.setImage("Pictures/palace_image.jpg");
 					x_index = 3;
 					y_index = 2;
 				}
 				if(currentEnvironment.getEnvironName().equals("dungeon"))
 				{
+					display.setImage("Pictures/dungeon_image.jpg");
 					x_index = 3;
 					y_index = 0;
 				}
@@ -505,5 +513,4 @@ public class Game{
 		}
 		return -1;
 	}
-
 }
