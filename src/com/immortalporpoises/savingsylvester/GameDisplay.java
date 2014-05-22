@@ -130,7 +130,7 @@ public class GameDisplay extends JPanel {
 	{
 		//setup image
 		Icon icon = new ImageIcon(openImage(image_dir));
-		image_label = new JLabel(icon);
+		image_label.setIcon(icon);
 		image_label.setBounds(0, 0, 512, 300);
 		
 	}
