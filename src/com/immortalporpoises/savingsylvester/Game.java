@@ -29,6 +29,7 @@ public class Game{
 	private Environment[][] your_room = new Environment[1][1]; //the starting room array
 	private Environment[][] dungeon = new Environment[5][5];//the dungeon area array
 	private Environment[][] palace = new Environment[4][3];//the palace area array
+	private Environment[][] tower = new Environment[1][3];//the dungeon area array
 	private List<Thing> Inventory = new ArrayList<Thing>();// the inventory
 	private int x_index = 0;
 	private int y_index = 0;
@@ -81,6 +82,11 @@ public class Game{
 		Environment se_palace = new Southeastpalace();
 		Environment sw_palace = new Southwestpalace();
 		
+		//initialize tower environments
+		Environment n_tower = new Northtower();
+		Environment c_tower = new Centertower();
+		Environment s_tower = new Southtower();
+		
 		//area that acts as "filler" for areas the player can't go in the array
 		Environment empty = new Empty();
 		
@@ -89,6 +95,7 @@ public class Game{
 		environments.add(nwg);
 		environments.add(nw_dungeon);
 		environments.add(sw_palace);
+		environments.add(s_tower);
 		
 		// garden area [col][row]
 		garden[1][0] = ng;
@@ -130,7 +137,7 @@ public class Game{
 					}
 				}
 				
-				// garden area [col][row]
+				// palace area [col][row]
 				palace[0][0] = nw_palace;
 				palace[1][0] = ln_palace; 
 				palace[2][0] = rn_palace;
@@ -140,6 +147,11 @@ public class Game{
 				palace[1][2] = ls_palace;
 				palace[2][2] = rs_palace;
 				palace[3][2] = se_palace;
+				
+				// tower area [col][row]
+				palace[0][0] = n_tower;
+				palace[0][1] = c_tower; 
+				palace[0][2] = s_tower;
 				
 		//the initial text when you start the game
 		display.setOutput("Saving Sylvester, Copyright 2014 Immortal Porpoises \n\nNote: please limit commands to 2 words, "
@@ -359,6 +371,16 @@ public class Game{
 					x_index = 0;
 					y_index = 1;
 				}
+				if(currentEnvironment.getEnvironName().equals("palace"))
+				{
+					x_index = 0;
+					y_index = 0;
+				}
+				if(currentEnvironment.getEnvironName().equals("tower"))
+				{
+					x_index = 0;
+					y_index = 2;
+				}
 			}
 		}
 		
@@ -435,6 +457,7 @@ public class Game{
 		if(part1.equals("punch") || part1.equals("kick") || part1.contains("hit") && part2.equals("bear"))
 		{
 			display.setOutput("the bear snaps to life and begins to beat the ever-loving mess out of you.");
+			display.setOutput("It seems like the bear decided to spare your life.");
 		}
 		
 		//handle opening door in atrium with key here
