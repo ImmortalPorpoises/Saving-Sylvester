@@ -12,7 +12,7 @@ public class Audio extends Thread
     {
     	try
     	{
-<<<<<<< HEAD
+
     	AudioInputStream audioIn1 = AudioSystem.getAudioInputStream(new File("Audio/C.wav"));
     	Clip clip1 = AudioSystem.getClip();
     	clip1.open(audioIn1);
@@ -22,12 +22,12 @@ public class Audio extends Thread
     	clip2.open(audioIn2);
     	clip2.start();
     	
-=======
+
 	    	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Audio/CSDungeonsongysong.wav"));
 	    	Clip clip = AudioSystem.getClip();
 	    	clip.open(audioIn);
 	    	clip.start();
->>>>>>> a60d0de8ae414d17900e49ed9a16a434be9858c0
+
     	}
     	catch(Exception ex)
     	{
