@@ -347,13 +347,31 @@ public class Game{
 						+ "be forced to exterminate you.");
 			}
 		}
-
+		//handle opening gate in garden with key here
+				if(part1.equals("unlock") && part2.equals("gate"))
+				{
+					Environment[][] move_array = new Environment[3][3];
+					if(currentEnvironment.getEnvironName().equals("garden") && Inventory.get(0).getName().equals("key"))
+					{
+						if(garden[x_index][y_index] == garden[2][2])
+						{
+						display.setOutput("You open the gate to the dungeon of the castle.");
+						opengate = 1;
+						}
+					} 
+					else
+					{
+						display.setOutput("Sorry, but you're going to need a key to open this gate.");
+					}
+				}
+		
+		
 		//********************************
 		// MOVEMENT VIA PASSAGES handled here
 		// (moves the player between arrays)
 		//********************************
 		
-		if(part1.equals("enter"))
+		if(part1.equals("enter") || part1.equals("exit"))
 		{
 			Environment[][] move_array = new Environment[3][3];
 			
@@ -361,18 +379,19 @@ public class Game{
 			{
 				display.setOutput("You cannot enter the " + part2 + ".");
 			}
-			else
-			{
+			if(part2.equals("hole"))
+				{
 				if(currentEnvironment.getEnvironName().equals("garden") && garden[x_index][y_index] == garden[2][2])
 				{
 					if(opengate == 1)
 					{
-						display.setOutput("You enter the " + part2 + ".");
+						
 						String passage_leads = currentEnvironment.getPassagDestination(part2);
 						currentEnvironment = environments.get(getEnvironIndex(passage_leads));
-						display.setOutput(currentEnvironment.getEntryDescription());
 						if(currentEnvironment.getEnvironName().equals("dungeon"))
 						{
+							display.setOutput("You enter the " + part2 + ".");
+							display.setOutput(currentEnvironment.getEntryDescription());
 							display.setImage("Pictures/dungeon_image.jpg");
 							x_index = 0;
 							y_index = 1;
@@ -382,17 +401,28 @@ public class Game{
 					{
 						display.setOutput("Sorry, but you're going to need a key to open this gate.");
 					}
+				}else if(currentEnvironment.getEnvironName().equals("garden"))
+				{
+					
+					display.setOutput("You enter the " + part2 + ".");
+					display.setOutput(currentEnvironment.getEntryDescription());
+					display.setImage("Pictures/garden_image.jpg");
+					x_index = 2;
+					y_index = 2;
 				}
-				
-				x_index = 0;
-				y_index = 0;
+				}
+				else
+				{
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
 				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
 				if(currentEnvironment.getEnvironName().equals("garden"))
 				{
+					
 					display.setOutput("You enter the " + part2 + ".");
 					display.setOutput(currentEnvironment.getEntryDescription());
 					display.setImage("Pictures/garden_image.jpg");
+					x_index = 0;
+					y_index = 0;
 				}
 				if(currentEnvironment.getEnvironName().equals("palace"))
 				{
@@ -411,7 +441,8 @@ public class Game{
 					y_index = 2;
 				}
 			}
-		}
+		}	
+	
 		
 		if(part1.equals("climb"))
 		{
@@ -489,30 +520,6 @@ public class Game{
 		{
 			display.setOutput("the bear snaps to life and begins to beat the ever-loving mess out of you.");
 			display.setOutput("It seems like the bear decided to spare your life.");
-		}
-		
-		//handle opening door in atrium with key here
-		if(part1.equals("unlock") && part2.equals("gate"))
-		{
-			Environment[][] move_array = new Environment[3][3];
-			if(currentEnvironment.getEnvironName().equals("garden") && Inventory.get(0).getName().equals("key"))
-			{
-				if(currentEnvironment.getEnvironName().equals("garden"))
-				{
-					move_array = dungeon;
-					x_index=2;
-					y_index=2;
-				}
-				if(move_array[x_index][y_index] == garden[2][2])
-				{
-				display.setOutput("You open the gate to the dungeon of the castle.");
-				opengate = 1;
-				}
-			} 
-			else
-			{
-				display.setOutput("Sorry, but you're going to need a key to open this gate.");
-			}
 		}
 		
 		display.setUpdateValue(false);
