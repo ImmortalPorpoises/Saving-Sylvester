@@ -10,7 +10,8 @@ public final class Centertower extends Environment {
 		environ_name = "tower";
 		
 		//entry description
-		entry_description = "TBA";
+		entry_description = "You are in the center part of the tower.";
+		main_description = "Your passages are to the north.";
 	}
 	
 }

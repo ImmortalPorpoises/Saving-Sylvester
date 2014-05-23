@@ -12,6 +12,7 @@ public final class Northwestpalace extends Environment
 				
 		//entry description
 		entry_description = "You find yourself in the Northwest corner of the palace. A giant door blocks your way.";
+		main_description = "Your passages are to the east, and a door.";
 		
 		//passage to palace
 		Passage door = new Passage("door","tower");		

@@ -11,6 +11,7 @@ public final class Leftcenterpalace extends Environment
 		environ_name = "palace";
 				
 		//entry description
-		entry_description = "TBA";
+		entry_description = "You are in the left center part of the palace.";
+		main_description = "Your passages are to the north and south.";
 	}
 }

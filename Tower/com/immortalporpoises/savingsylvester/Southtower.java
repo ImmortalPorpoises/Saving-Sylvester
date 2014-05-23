@@ -10,7 +10,8 @@ public final class Southtower extends Environment {
 		environ_name = "tower";
 		
 		//entry description
-		entry_description = "TBA";
+		entry_description = "You are in the south part of the tower.";
+		main_description = "Your passages are to the north, and a door.";
 		
 		//passage to palace
 		Passage door = new Passage("door", "palace");		
