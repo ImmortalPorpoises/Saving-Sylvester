@@ -5,6 +5,7 @@ public class YourRoom extends Environment {
 	public YourRoom() {
 		//give the environment a name
 		environ_name = "room";
+		//environ_name ="around";
 		
 		//the description
 		entry_description = "Upon entering your room, you are struck by a musty odor.";

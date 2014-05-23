@@ -314,7 +314,7 @@ public class Game{
 		
 		if(part1.equals("look") || part1.equals("examine"))
 		{
-			if(part2.equals(currentEnvironment.getEnvironName()))
+			if(part2.equals(currentEnvironment.getEnvironName()) || part2.equals("around"))
 			{
 				display.setOutput("You look around the " + currentEnvironment.getEnvironName() + ".");
 				display.setOutput(currentEnvironment.getDescription());

@@ -10,6 +10,6 @@ public final class Westdungeon extends Environment
 		main_description = "still damp, still dark, still death, keep moving";
 
 		//entry description
-		entry_description = "West Dungeon area";
+		entry_description = "You start to have second thoughts about heading towards the screaming";
 	}
 }
