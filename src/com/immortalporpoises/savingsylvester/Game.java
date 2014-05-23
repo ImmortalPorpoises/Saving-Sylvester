@@ -27,6 +27,7 @@ public class Game{
 	private List<Environment> environments = new ArrayList<Environment>();
 	private Environment[][] garden = new Environment[3][3];//the garden area array
 	private Environment[][] your_room = new Environment[1][1]; //the starting room array
+	private Environment[][] Docs_Lab = new Environment[1][1]; //the laboratory array
 	private Environment[][] dungeon = new Environment[5][5];//the dungeon area array
 	private Environment[][] palace = new Environment[4][3];//the palace area array
 	private Environment[][] tower = new Environment[1][3];//the dungeon area array
@@ -34,6 +35,7 @@ public class Game{
 	private int x_index = 0;
 	private int y_index = 0;
 	private int opengate = 0;
+	private int correct = 0;
 	
 		
 
@@ -48,6 +50,9 @@ public class Game{
 		
 		//initialize room
 		Environment room = new YourRoom();
+		
+		//initialize lab
+		Environment lab = new Docs_Lab();
 		
 		//initialize garden environments
 		Environment nwg = new Northwestgarden();
@@ -97,6 +102,7 @@ public class Game{
 		environments.add(nw_dungeon);
 		environments.add(sw_palace);
 		environments.add(s_tower);
+		environments.add(lab);
 		
 		// garden area [col][row]
 		garden[1][0] = ng;
@@ -148,6 +154,15 @@ public class Game{
 				palace[1][2] = ls_palace;
 				palace[2][2] = rs_palace;
 				palace[3][2] = se_palace;
+				
+				//fill palace with empty environments first
+				for(int i = 0; i < 1; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						tower[i][j] = empty;
+					}
+				}
 				
 				// tower area [col][row]
 				tower[0][0] = n_tower;
@@ -371,7 +386,7 @@ public class Game{
 		// (moves the player between arrays)
 		//********************************
 		
-		if(part1.equals("enter") || part1.equals("exit"))
+		if(part1.equals("enter") || part1.equals("follow"))
 		{
 			Environment[][] move_array = new Environment[3][3];
 			
@@ -411,6 +426,19 @@ public class Game{
 					y_index = 2;
 				}
 				}
+			else if(part2.equals("woman"))
+			{
+				String passage_leads = currentEnvironment.getPassagDestination(part2);
+				currentEnvironment = environments.get(getEnvironIndex(passage_leads));
+				if(currentEnvironment.getEnvironName().equals("lab"))
+				{
+					
+					display.setOutput("You follow the " + part2 + ".");
+					display.setOutput(currentEnvironment.getEntryDescription());
+					x_index = 0;
+					y_index = 0;
+				}
+			}
 				else
 				{
 				String passage_leads = currentEnvironment.getPassagDestination(part2);
@@ -511,6 +539,37 @@ public class Game{
 			}
 		}
 		
+		//************************
+		// Riddle
+		//************************
+		if(currentEnvironment.getEnvironName().equals("tower") && tower[x_index][y_index] == tower[0][0])
+		{
+			if(part1.equals("answer") && part2.equals("river"))
+			{
+				correct = 1;
+				
+			}
+			else
+			{
+				correct = 2;
+			}
+		}
+		if(currentEnvironment.getEnvironName().equals("tower") && tower[x_index][y_index] == tower[0][0])
+		{
+			if(correct == 1)
+			{
+				display.setOutput("P.F. Tollers bursts into a fiery blaze quickly turns into a pile of ash.");
+				display.setOutput("Conratulations!!! You have beaten the game. Sorry to say this but it is actually impossible to change fate. So the prince is still dead.... The End!");
+				display.setOutput("Please type in 'kill myself' to end the game now.");
+			}
+			else if(correct == 2)
+			{
+				display.setOutput("Sorry your answer was inccorect. Your punishment is to kill yourself.");
+				display.setOutput("Please type in 'kill myself' to end the game now.");
+			}
+		}
+		
+		
 		//***********************
 		// PUNCHING THE BEAR handled here
 		// (because this feature is obviously so important)
@@ -521,7 +580,7 @@ public class Game{
 			display.setOutput("the bear snaps to life and begins to beat the ever-loving mess out of you.");
 			display.setOutput("It seems like the bear decided to spare your life.");
 		}
-		
+				
 		display.setUpdateValue(false);
 	}
 	
