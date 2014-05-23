@@ -9,7 +9,7 @@ public class Southwestgarden extends Environment
 			environ_name = "garden";//name of environment
 			//environ_name = "around";
 			entry_description = "When you enter the south west corner of the garden you notice a rather large" + " knight sharpening a" + " sword.";// decription of the environmanet
-			main_description = "This part of the garden is full of practice dummys for inspiring knights";//look command
+			main_description = "This part of the garden is full of practice dummys for inspiring knights.  Your passages are to your north, and east.";//look command
 			
 			//setup
 			Knight k = new Knight();

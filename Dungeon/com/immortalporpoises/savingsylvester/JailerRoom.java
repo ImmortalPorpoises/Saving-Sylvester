@@ -12,6 +12,6 @@ public class JailerRoom extends Environment
 				+ " and snoring loudly as if defiant of the impending hangover. A set of keys dangles on the wall, "
 				+ "alongside an empty pair of shackles, a cudgel, and a bucket filled with water. "
 				+ "In another corner of the room is a rusty suit of armor. The kit includes a helmet, "
-				+ "breastplate, greaves, a belt, a padded vest, and a hauberk of chain-mail.";
+				+ "breastplate, greaves, a belt, a padded vest, and a hauberk of chain-mail.  Your passages are to the north and west.";
 	}
 }

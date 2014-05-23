@@ -11,5 +11,6 @@ public final class Westdungeon extends Environment
 
 		//entry description
 		entry_description = "You start to have second thoughts about heading towards the screaming";
+		main_description = "still damp, still dark, still death, keep moving.  Your passages are to the south.";
 	}
 }

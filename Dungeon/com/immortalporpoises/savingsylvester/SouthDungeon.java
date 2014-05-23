@@ -8,8 +8,7 @@ public class SouthDungeon extends Environment {
 		
 		entry_description = "You strenthen your resove and press onward";
 		
-		main_description = "There is a door leading off to your left and one leading to the right. Torches flicker"
-				+ " on the moist stone walls";
+		main_description = "Torches are flickering on the moist stone walls.  Your passages are to the east and west.";
 	}
 
 }

@@ -16,6 +16,7 @@ public class Audio extends Thread
     	AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Audio/CSGameIntro.wav"));
     	Clip clip1 = AudioSystem.getClip();
     	clip1.open(audioIn);
+    	clip1.loop(Clip.LOOP_CONTINUOUSLY);
     	clip1.start();
     	}
     	catch(Exception ex)

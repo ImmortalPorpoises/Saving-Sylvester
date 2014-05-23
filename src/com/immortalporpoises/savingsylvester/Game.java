@@ -542,14 +542,13 @@ public class Game{
 		//************************
 		// Riddle
 		//************************
-		if(currentEnvironment.getEnvironName().equals("tower") && tower[x_index][y_index] == tower[0][0])
+		if (part1.equals("answer"))
 		{
-			if(part1.equals("answer") && part2.equals("river"))
+			if(part2.equals("river"))
 			{
 				correct = 1;
-				
 			}
-			else
+			else if(!part2.equals("river"))
 			{
 				correct = 2;
 			}
