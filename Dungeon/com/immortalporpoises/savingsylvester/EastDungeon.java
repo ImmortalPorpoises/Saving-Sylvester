@@ -6,8 +6,10 @@ public class EastDungeon extends Environment
 	{
 		environ_name = "dungeon";
 		
-		entry_description = "East Dungeon area - TBA";
+		entry_description = "As you move thorugh the hall you start to feel drops of what you pray to be water on your head.";
 		
-		main_description = "Water drips from the ceiling onto a small grate";
+		main_description = "A liquid  drips from the ceiling onto a small grate";
+		
+		
 	}
 }

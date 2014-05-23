@@ -6,9 +6,9 @@ public class Atrium extends Environment
 	{
 		environ_name = "dungeon";
 		
-		entry_description = "atrium of the dungeon";
+		entry_description = "As you leave the Jailers Room a flood of light nearly blinds you as you can once again see the sky, and more importantly, the palace gates";
 		
-		main_description = "TBA";
+		main_description = "The atrium is the first fresh air you have had in a while. It is lined with tall elabortely decorated columns. Several people are busily moving about not refusing to talk to you.";
 		
 		//passage to palace
 		Passage stairs = new Passage("stairs", "palace");		
